@@ -117,7 +117,7 @@ function Newaddress({ curUserId, cancelBtn }) {
 
         <div className="flex flex-col gap-3">
           <Input
-            size="sm"
+            size="md"
             name="name"
             className="broder-[2px]"
             value={data.name}
@@ -127,7 +127,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.name} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="phoneno"
             className="broder-[2px]"
             value={data.phoneno}
@@ -139,7 +139,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <h1 className="py-3">Address</h1>
 
           <Input
-            size="sm"
+            size="md"
             name="address"
             className="broder-[2px]"
             value={data.address}
@@ -149,7 +149,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.address} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="locality"
             className="broder-[2px]"
             value={data.locality}
@@ -159,7 +159,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.locality} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="pincode"
             className="broder-[2px]"
             value={data.pincode}
@@ -169,7 +169,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.pincode} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="city"
             className="broder-[2px]"
             value={data.city}
@@ -179,7 +179,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.city} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="state"
             className="broder-[2px]"
             value={data.state}
@@ -189,7 +189,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.state} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="landmark"
             className="broder-[2px]"
             value={data.landmark}
@@ -199,7 +199,7 @@ function Newaddress({ curUserId, cancelBtn }) {
           <span className="text-red-500 text-[12px]">{formErr.landmark} </span>
 
           <Input
-            size="sm"
+            size="md"
             name="alternatemobile"
             className="broder-[2px]"
             value={data.alternatemobile}

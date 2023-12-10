@@ -151,7 +151,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
       <div className='flex flex-col gap-3'>
         
         <Input
-          size="sm" name="name"
+          size="md" name="name"
           className="broder-[2px]" value={data.name}
           label="Name*"
           onChange={gettingDetails}
@@ -159,7 +159,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
          <span className='text-red-500 text-[12px]'>{formErr.name} </span>
 
         <Input
-          size="sm" name="phoneno" type='number'
+          size="md" name="phoneno" type='number'
           className="broder-[2px]" value={data.phoneno}
           label="Mobile No*"
           onChange={gettingDetails}
@@ -169,7 +169,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
         <h1 className="py-3">Address</h1>
 
         <Input
-          size="sm" name="address"
+          size="md" name="address"
           className="broder-[2px]" value={data.address}
           label="Address(House no., Building, Street)*"
           onChange={gettingDetails}
@@ -177,7 +177,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
          <span className='text-red-500 text-[12px]'>{formErr.address} </span>
 
         <Input
-          size="sm" name="locality"
+          size="md" name="locality"
           className="broder-[2px]" value={data.locality}
           label="Locality/Town*"
           onChange={gettingDetails}
@@ -185,7 +185,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
          <span className='text-red-500 text-[12px]'>{formErr.locality} </span>
        
         <Input
-          size="sm" name="pincode"
+          size="md" name="pincode"
           className="broder-[2px]" value={data.pincode}
           label="Pincode*"
           onChange={gettingDetails}
@@ -193,7 +193,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
          <span className='text-red-500 text-[12px]'>{formErr.pincode} </span>
 
         <Input
-          size="sm" name="city"
+          size="md" name="city"
           className="broder-[2px]" value={data.city}
           label="City/District*"
           onChange={gettingDetails}
@@ -201,7 +201,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
          <span className='text-red-500 text-[12px]'>{formErr.city} </span>
 
         <Input
-          size="sm" name="state"
+          size="md" name="state"
           className="broder-[2px]" value={data.state}
           label="State*"
           onChange={gettingDetails}
@@ -209,14 +209,14 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
          <span className='text-red-500 text-[12px]'>{formErr.state} </span>
        
         <Input
-          size="sm" name="landmark"
+          size="md" name="landmark"
           className="broder-[2px]" value={data.landmark}
           label="Landmark"
           onChange={gettingDetails}
         />
 
         <Input
-          size="sm" name="alternatemobile" type='number'
+          size="md" name="alternatemobile" type='number'
           className="broder-[2px]" value={data.alternatemobile}
           label="Aleternate Mobile(Optional)"
           onChange={gettingDetails}

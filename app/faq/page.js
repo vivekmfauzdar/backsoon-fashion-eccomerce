@@ -4,7 +4,7 @@ function page() {
 
 
   return (
-    <div>
+    <div className='h-[90vh]'>
        <h1>this is faq page</h1>
     </div>
   )

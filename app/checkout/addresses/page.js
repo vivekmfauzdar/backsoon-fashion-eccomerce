@@ -100,7 +100,6 @@ function Addresses() {
 
     }, [curUserId])
 
-    console.log(addressData)
 
   const gettingDetails = (e) => {
 
@@ -188,14 +187,14 @@ function Addresses() {
 
         <h1 className="py-3">Contact Details</h1>
         <Input
-          size="sm" name="name"
+          size="md" name="name"
           className="broder-[2px]"
           label="Name*"
           onChange={gettingDetails}
         />
 
         <Input
-          size="sm" name="phoneno"
+          size="md" name="phoneno"
           className="broder-[2px]"
           label="Mobile No*"
           onChange={gettingDetails}
@@ -204,49 +203,49 @@ function Addresses() {
         <h1 className="py-3">Address</h1>
 
         <Input
-          size="sm" name="address"
+          size="md" name="address"
           className="broder-[2px]"
           label="Address(House no., Building, Street)*"
           onChange={gettingDetails}
         />
 
         <Input
-          size="sm" name="locality"
+          size="md" name="locality"
           className="broder-[2px]"
           label="Locality/Town*"
           onChange={gettingDetails}
         />
        
         <Input
-          size="sm" name="pincode"
+          size="md" name="pincode"
           className="broder-[2px]"
           label="Pincode*"
           onChange={gettingDetails}
         />
 
         <Input
-          size="sm" name="city"
+          size="md" name="city"
           className="broder-[2px]"
           label="City/District*"
           onChange={gettingDetails}
         />
 
         <Input
-          size="sm" name="state"
+          size="md" name="state"
           className="broder-[2px]"
           label="State*"
           onChange={gettingDetails}
         />
        
         <Input
-          size="sm" name="landmark"
+          size="md" name="landmark"
           className="broder-[2px]"
           label="Landmark"
           onChange={gettingDetails}
         />
 
         <Input
-          size="sm" name="alternatemobile"
+          size="md" name="alternatemobile"
           className="broder-[2px]"
           label="Aleternate Mobile(Optional)"
           onChange={gettingDetails}
@@ -281,9 +280,9 @@ function Addresses() {
         addressData.map(({curElm}, i) => {
 
         return(
-         <div>
+         <div key={i}>
   
-          <div className={`shadow-lg rounded-lg p-4`}>
+          <div  className={`shadow-lg rounded-lg p-4`}>
          
         <div className={`${index === i && open ? "hidden" : "flex"}`}>
         <div>
@@ -302,8 +301,8 @@ function Addresses() {
          </div>
 
          <div className={`flex gap-3 py-4 ${btnopen && btnindex === i ? "flex" : "hidden"}`}>
-           <Button size="sm" variant="outlined" onClick={() => openClose(i)}>Edit</Button>
-           <Button size="sm" variant="outlined" onClick={() => removeAddress(curElm.id)}>Remove</Button>
+           <Button size="md" variant="outlined" onClick={() => openClose(i)}>Edit</Button>
+           <Button size="md" variant="outlined" onClick={() => removeAddress(curElm.id)}>Remove</Button>
          </div>
 
           </div> 

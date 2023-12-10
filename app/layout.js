@@ -8,6 +8,8 @@ export const metadata = {
   description: 'Backsoon is a one Online Big Shop for All Your Fashion Needs',
 }
 
+
+
 export default function RootLayout({ children }) {
 
   return (
