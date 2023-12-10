@@ -53,6 +53,7 @@ function Newaddress({ curUserId, cancelBtn }) {
 
   useEffect(() => {
     if (Object.keys(formErr).length === 0 && isSubmit) {
+      try{
       dbfs
         .collection("Orders")
         .doc(curUserId)
@@ -62,6 +63,9 @@ function Newaddress({ curUserId, cancelBtn }) {
         .then(() => {
           toast.success("Address Added");
         });
+      }catch(error){
+        console.error(error)
+      }
     }
   }, [formErr]);
 

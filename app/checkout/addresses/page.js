@@ -78,6 +78,8 @@ function Addresses() {
 
         const FetchData = () => {
 
+          try{
+
           const colRef = dbfs.collection("Orders").doc(curUserId);
           colRef.collection("addresses").onSnapshot((snapshot) => {
 
@@ -92,6 +94,9 @@ function Addresses() {
 
             })
           })
+        }catch(error){
+          console.error(error)
+        }
 
         }
 
@@ -125,11 +130,15 @@ function Addresses() {
 
   const saveData = () => {
 
-    dbfs.collection("Orders").doc(curUserId).collection("addresses").add(data)
+    try{
+    const ref = dbfs.collection("Orders").doc(curUserId).collection("addresses").add(data)
    .then((docRef) => {
            
     toast.success("Address Added!!")
    });
+  }catch(error){
+    console.error(error)
+  }
 
   };
 
@@ -162,7 +171,8 @@ function Addresses() {
 
   const removeAddress = (index) => {
 
-    const docRef = dbfs.collection("Orders").doc(curUserId);
+    try{
+     const docRef = dbfs.collection("Orders").doc(curUserId);
     docRef.collection("addresses").doc(index).delete().then(() => {
 
       toast.success("Address Removed");
@@ -171,6 +181,9 @@ function Addresses() {
 
       console.error(error)
     })
+  }catch(error){
+    console.error(error)
+  }
 
   }
 
