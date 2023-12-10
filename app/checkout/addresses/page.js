@@ -71,48 +71,48 @@ function Addresses() {
     }, [])
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-      if(curUserId){
+    //   if(curUserId){
 
-        const FetchData = () => {
+    //     const FetchData = () => {
 
-          try{
+    //       try{
 
-          const colRef = dbfs.collection("Orders").doc(curUserId);
-          colRef.collection("addresses").onSnapshot((snapshot) => {
+    //       const colRef = dbfs.collection("Orders").doc(curUserId);
+    //       colRef.collection("addresses").onSnapshot((snapshot) => {
 
-            const arr = []
-            snapshot.forEach((curData) => {
+    //         const arr = []
+    //         snapshot.forEach((curData) => {
 
-              arr.push({
-                curElm: curData.data()
-              })
+    //           arr.push({
+    //             curElm: curData.data()
+    //           })
 
-              setAddressData(arr)
+    //           setAddressData(arr)
 
-            })
-          })
-        }catch(error){
-          console.error(error)
-        }
+    //         })
+    //       })
+    //     }catch(error){
+    //       console.error(error)
+    //     }
 
-        }
+    //     }
 
-        FetchData()
-      }
+    //     FetchData()
+    //   }
 
-    }, [curUserId])
+    // }, [curUserId])
 
 
   const gettingDetails = (e) => {
 
-    const name = e.target.name;
-    const value = e.target.value;
+    // const name = e.target.name;
+    // const value = e.target.value;
 
-    setData((prev) => {
-      return { ...prev, [name]: value };
-    });
+    // setData((prev) => {
+    //   return { ...prev, [name]: value };
+    // });
  
   };
 
@@ -127,48 +127,48 @@ function Addresses() {
   // }, [])
 
 
-  const saveData = () => {
+  // const saveData = () => {
 
-    try{
-    const ref = dbfs.collection("Orders").doc(curUserId).collection("addresses").add(data)
-   .then((docRef) => {
+  //   try{
+  //   const ref = dbfs.collection("Orders").doc(curUserId).collection("addresses").add(data)
+  //  .then((docRef) => {
            
-    toast.success("Address Added!!")
-   });
-  }catch(error){
-    console.error(error)
-  }
+  //   toast.success("Address Added!!")
+  //  });
+  // }catch(error){
+  //   console.error(error)
+  // }
 
-  };
+  // };
 
-  const placeOrder = ()=> {
+  // const placeOrder = ()=> {
 
-    router.push("/checkout/payments")
-  }
+  //   router.push("/checkout/payments")
+  // }
 
-  const openClose = (index) => {
+  // const openClose = (index) => {
 
         //  setOpen(true)
         //  setIndex(index)
         
-  }
+  // }
 
-  const getButtons = (index, curElm ) => {
+  // const getButtons = (index, curElm ) => {
 
     // setBtnOpen(true)
     // setBtnIndex(index)
     // const obj = {name : curElm.name, phone: curElm.phoneno, address: curElm.address, city : curElm.city,landmark : curElm.landmark, locality : curElm.locality, pincode : curElm.pincode,state : curElm.state, alternatemobile :curElm.alternatemobile, addresstype : curElm.addresstype}
     // localStorage.setItem("Selected Address", JSON.stringify(obj))
 
-  }
+  // }
 
-  const newAddress = () => {
+  // const newAddress = () => {
 
       //  setNewAddBtn(true)
 
-  }
+  // }
 
-  const removeAddress = (index) => {
+  // const removeAddress = (index) => {
 
   //   try{
   //    const docRef = dbfs.collection("Orders").doc(curUserId);
@@ -184,7 +184,7 @@ function Addresses() {
   //   console.error(error)
   // }
 
-  }
+  // }
 
   // const totalAmount = cartData?.reduce((accumulator, currenValue) => {
   //   return accumulator + currenValue.productprice;
@@ -277,7 +277,7 @@ function Addresses() {
 
         <button
           className="bg-red-400 text-white w-full p-2 mt-3 rounded"
-          onClick={saveData}
+          // onClick={saveData}
         >
           Save
         </button>
@@ -299,7 +299,7 @@ function Addresses() {
         <div className={`${index === i && open ? "hidden" : "flex"}`}>
         <div>
          <div className={`flex gap-3`} role="group"> 
-            <input type="radio" className= "accent-red-400" name="address" onChange={() => getButtons(i, curElm)}/>
+            <input type="radio" className= "accent-red-400" name="address"/>
             <h1 className="font-semibold">{curElm?.name}</h1>
             <span className="border-[1px] p-1 rounded border-green-500 text-green-500 text-[12px]">Home</span>
          </div>
@@ -312,9 +312,9 @@ function Addresses() {
             <h1 className="text-[14px]">Mobile: {curElm?.phoneno}</h1>
          </div>
 
-         <div className={`flex gap-3 py-4 ${btnopen && btnindex === i ? "flex" : "hidden"}`}>
-           <Button size="md" variant="outlined" onClick={() => openClose(i)}>Edit</Button>
-           <Button size="md" variant="outlined" onClick={() => removeAddress(curElm.id)}>Remove</Button>
+         <div>
+           <Button size="md" variant="outlined">Edit</Button>
+           <Button size="md" variant="outlined" >Remove</Button>
          </div>
 
           </div> 
@@ -369,7 +369,7 @@ function Addresses() {
           </div>
 
           <div className={`${btnopen ? "flex" : "hidden"} mt-3`}>
-            <button className={`bg-blue-400 text-white rounded p-2 w-full`} onClick={placeOrder}>
+            <button className={`bg-blue-400 text-white rounded p-2 w-full`}>
               Continue
             </button>
           </div>
