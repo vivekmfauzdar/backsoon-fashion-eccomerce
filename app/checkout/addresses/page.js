@@ -9,6 +9,7 @@ import {toast, Toaster} from "react-hot-toast";
 import { Button } from "@material-tailwind/react";
 import Addressbox from "@/app/addressbox";
 import Newaddress from "@/app/newaddress";
+import { querySnapshot } from "firebase/firestore";
 
 function Addresses() {
 
@@ -75,12 +76,14 @@ function Addresses() {
       if (curUserId) {
         try {
           const colRef = dbfs.collection("Orders").doc(curUserId);
-          colRef.collection("addresses").onSnapshot((snapshot) => {
-            const arr = snapshot.docs.map((curData) => ({
-              curElm: curData.data()
-            }));
-            setAddressData(arr); // Update the state with the new array
-          });
+          colRef.collection("addresses").get().then((s) => {
+
+          const arr =  s.docs.map((cur) => ({
+              curElm: cur.data()
+            }))
+
+             setAddressData(arr)
+          })
         } catch (error) {
           console.error(error);
         }
