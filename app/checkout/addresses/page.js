@@ -71,38 +71,38 @@ function Addresses() {
     }, [])
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //   if(curUserId){
+      if(curUserId){
 
-    //     const FetchData = () => {
+        const FetchData = () => {
 
-    //       try{
+          try{
 
-    //       const colRef = dbfs.collection("Orders").doc(curUserId);
-    //       colRef.collection("addresses").onSnapshot((snapshot) => {
+          const colRef = dbfs.collection("Orders").doc(curUserId);
+          colRef.collection("addresses").onSnapshot((snapshot) => {
 
-    //         const arr = []
-    //         snapshot.forEach((curData) => {
+            const arr = []
+            snapshot.forEach((curData) => {
 
-    //           arr.push({
-    //             curElm: curData.data()
-    //           })
+              arr.push({
+                curElm: curData.data()
+              })
 
-    //           setAddressData(arr)
+              setAddressData(arr)
 
-    //         })
-    //       })
-    //     }catch(error){
-    //       console.error(error)
-    //     }
+            })
+          })
+        }catch(error){
+          console.error(error)
+        }
 
-    //     }
+        }
 
-    //     FetchData()
-    //   }
+        FetchData()
+      }
 
-    // }, [curUserId])
+    }, [curUserId])
 
 
   const gettingDetails = (e) => {
