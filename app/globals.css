@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+.buttons {
+    padding: 2px;
+    border-radius: 2px;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .buttons input {
+    appearance: none;
+    cursor: pointer;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(144, 143, 143);  
+    padding: 3px 6px;
+    background: white;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+    font-family: sans-serif;
+    transition: all 0.1s;
+  }
+  
+  .buttons input:checked {
+    background: black;
+    color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;  
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .buttons input::before {
+    content: attr(label);
+    text-align: center;
+  }
+  
+  .opt-container {
+    @apply flex justify-between gap-2;
+  }
+  .opt-container input {
+    @apply !mr-0 flex-1 py-5 outline-none border-black border-[1px] rounded w-12;
+  }
+
+  /* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.slick-slide > div{
+
+  margin: 0 10px;
+
+}
+
+
+.thicon:hover {
+  color: rgb(211, 5, 40);
+}
+
+ion-icon {
+  font-size: 38px;
+}
+
+.slick-next {
+  right: 0px;
+}

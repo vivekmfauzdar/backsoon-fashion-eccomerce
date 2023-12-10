@@ -1,0 +1,94 @@
+"use client"
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
+import { dbfs } from './firebase';
+import Link from 'next/link';
+
+function Bestoftshirts() {
+  
+
+    const [firebaseData, setFirebaseData] = useState([])
+
+    useEffect(() => {
+
+        const fetchData = () => {
+
+            const d = dbfs.collection("AllProducts").where("category", "array-contains", "hoodie").orderBy("realprice", "desc").limit(4).onSnapshot((snapshot) => {
+
+                const arr = []
+                snapshot.forEach((cur) => {
+                   arr.push(cur.data())
+                })
+
+                setFirebaseData(arr)
+            }, (error) => {console.error(error)} );
+
+        }
+
+        fetchData()
+
+    }, [])
+
+    const getOffPercent = (discountedprice, realprice) => {
+        const dicountprice = realprice - discountedprice;
+        const getoff = (dicountprice / realprice) * 100;
+        return Math.floor(getoff);
+      };
+
+     
+      const shortentitle = (title, limit)=> {
+
+        if(title.length > limit){
+          return title.slice(0, limit) + '...'
+        }
+        return title
+      }
+    return (
+      <div className=' mx-auto text-black'>
+      <div className='mt-10'>
+       <div className='flex justify-between mr-5'>
+       <span className='font-semibold text-2xl text-center pl-5'>Hoodies<span className='text-pink-500'>ForYou</span></span>
+       <Link href='/hoodies' className='font-semibold text-pink-400'>View All </Link>
+       </div>
+       <div>
+       <div className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 pt-5 pb-5 lg:gap-4 gap-5 p-10">
+          {firebaseData.map((curElm, index) => {
+            return (
+              <Link key={index} href={{pathname : `/product/${curElm.id}`, query: {category: curElm.colletionN}}}>
+
+              <div className="shadow-lg cursor-pointer pb-3 rounded-lg">
+              <div className='relative'>
+                <div className='absolute object-contain flex justify-center bottom-0 h-70 md:h-70 z-10 opacity-100 transition-opacity duration-700 hover:opacity-0 w-full bg-white overflow-hidden dark:bg-gray-800'>
+                    <Image className="h-96 md:h-[16rem] w-full" src={curElm.images[0]} width={200} height={250} alt='product'/>
+                 </div>
+                
+                 <div className="flex justify-center opacity-100 object-contain h-70 md:h-70 bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
+                 <Image className="h-96 md:h-[16rem] w-full" src={curElm.images[1]} alt="product" width={200} height={250} />
+
+                 </div>
+                 </div>
+
+                <h1 className="font-semibold pl-2">{curElm.brand}</h1>
+                <h2 className='text-[13px] pl-2'>{shortentitle(curElm.title, 20)}</h2>
+                <div className="flex gap-2 pl-2">
+                  <h3 className="font-semibold">
+                  ₹{curElm.discountedprice}
+                  </h3>
+                  <h3 className="line-through	">₹{curElm.realprice}</h3>
+                  <h3 className="text-green-400	">
+                    {getOffPercent(curElm.discountedprice, curElm.realprice)}%
+                    OFF
+                  </h3>
+                </div>
+              </div>
+              </Link>
+            );
+          })}
+        </div>
+       </div>
+     </div>
+    </div>
+  )
+}
+
+export default Bestoftshirts
