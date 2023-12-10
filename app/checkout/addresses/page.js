@@ -86,10 +86,9 @@ function Addresses() {
               arr.push({
                 curElm: curData.data()
               })
-
-              setAddressData(arr)
-
             })
+            setAddressData(arr)
+
           })
         }catch(error){
           console.error(error)
