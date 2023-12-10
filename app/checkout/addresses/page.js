@@ -75,8 +75,6 @@ function Addresses() {
 
       if(curUserId){
 
-        const FetchData = () => {
-
           try{
 
           const colRef = dbfs.collection("Orders").doc(curUserId);
@@ -97,10 +95,9 @@ function Addresses() {
           console.error(error)
         }
 
-        }
 
-        FetchData()
       }
+
 
     }, [curUserId])
 
