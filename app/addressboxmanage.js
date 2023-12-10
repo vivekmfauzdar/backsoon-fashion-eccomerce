@@ -145,7 +145,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
           
           <Input
             size="sm" name="name"
-            className="broder-[2px]" value={data.name}
+            className="border-[2px]" value={data.name}
             label="Name*"
             onChange={gettingDetails}
           />
@@ -153,7 +153,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
   
           <Input
             size="sm" name="phoneno" type='number'
-            className="broder-[2px]" value={data.phoneno}
+            className="border-[2px]" value={data.phoneno}
             label="Mobile No*"
             onChange={gettingDetails}
           />
@@ -163,7 +163,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
   
           <Input
             size="sm" name="address"
-            className="broder-[2px]" value={data.address}
+            className="border-[2px]" value={data.address}
             label="Address(House no., Building, Street)*"
             onChange={gettingDetails}
           />
@@ -171,7 +171,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
   
           <Input
             size="sm" name="locality"
-            className="broder-[2px]" value={data.locality}
+            className="border-[2px]" value={data.locality}
             label="Locality/Town*"
             onChange={gettingDetails}
           />
@@ -179,7 +179,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
          
           <Input
             size="sm" name="pincode"
-            className="broder-[2px]" value={data.pincode}
+            className="border-[2px]" value={data.pincode}
             label="Pincode*"
             onChange={gettingDetails}
           />
@@ -187,7 +187,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
   
           <Input
             size="sm" name="city"
-            className="broder-[2px]" value={data.city}
+            className="border-[2px]" value={data.city}
             label="City/District*"
             onChange={gettingDetails}
           />
@@ -195,7 +195,7 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
   
           <Input
             size="sm" name="state"
-            className="broder-[2px]" value={data.state}
+            className="border-[2px]" value={data.state}
             label="State*"
             onChange={gettingDetails}
           />
@@ -203,14 +203,14 @@ function Addressboxmanage({curUser, index, sendingInputData, sendingChildData}) 
          
           <Input
             size="sm" name="landmark"
-            className="broder-[2px]" value={data.landmark}
+            className="border-[2px]" value={data.landmark}
             label="Landmark"
             onChange={gettingDetails}
           />
   
           <Input
             size="sm" name="alternatemobile" type='number'
-            className="broder-[2px]" value={data.alternatemobile}
+            className="border-[2px]" value={data.alternatemobile}
             label="Aleternate Mobile(Optional)"
             onChange={gettingDetails}
           />
