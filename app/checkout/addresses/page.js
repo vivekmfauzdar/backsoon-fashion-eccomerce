@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { dbfs } from "@/app/firebase";
+import { dbfs } from "../../firebase";
 import { Input } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import { getAuth } from "firebase/auth";
@@ -36,19 +36,19 @@ function Addresses() {
   });
 
 
-  const gettingChildData = (childData) => {
+  // const gettingChildData = (childData) => {
 
-    setOpen(childData.open)
-    setIndex(childData.ival)
+  //   setOpen(childData.open)
+  //   setIndex(childData.ival)
 
-  }
+  // }
 
-  const gettingNewAddData = (childData) => {
+  // const gettingNewAddData = (childData) => {
 
 
-     setNewAddBtn(childData)
+  //    setNewAddBtn(childData)
 
-  }
+  // }
 
 
   // getting the current user
@@ -117,14 +117,14 @@ function Addresses() {
   };
 
   //getting the cart item details
-  useEffect(() => {
+  // useEffect(() => {
 
-      const cartData = localStorage.getItem("cartData");
-      if(cartData){
-        setCartData(JSON.parse(cartData))
-      }
+  //     const cartData = localStorage.getItem("cartData");
+  //     if(cartData){
+  //       setCartData(JSON.parse(cartData))
+  //     }
 
-  }, [])
+  // }, [])
 
 
   const saveData = () => {
@@ -148,47 +148,47 @@ function Addresses() {
 
   const openClose = (index) => {
 
-         setOpen(true)
-         setIndex(index)
+        //  setOpen(true)
+        //  setIndex(index)
         
   }
 
   const getButtons = (index, curElm ) => {
 
-    setBtnOpen(true)
-    setBtnIndex(index)
-    const obj = {name : curElm.name, phone: curElm.phoneno, address: curElm.address, city : curElm.city,landmark : curElm.landmark, locality : curElm.locality, pincode : curElm.pincode,state : curElm.state, alternatemobile :curElm.alternatemobile, addresstype : curElm.addresstype}
-    localStorage.setItem("Selected Address", JSON.stringify(obj))
+    // setBtnOpen(true)
+    // setBtnIndex(index)
+    // const obj = {name : curElm.name, phone: curElm.phoneno, address: curElm.address, city : curElm.city,landmark : curElm.landmark, locality : curElm.locality, pincode : curElm.pincode,state : curElm.state, alternatemobile :curElm.alternatemobile, addresstype : curElm.addresstype}
+    // localStorage.setItem("Selected Address", JSON.stringify(obj))
 
   }
 
   const newAddress = () => {
 
-       setNewAddBtn(true)
+      //  setNewAddBtn(true)
 
   }
 
   const removeAddress = (index) => {
 
-    try{
-     const docRef = dbfs.collection("Orders").doc(curUserId);
-    docRef.collection("addresses").doc(index).delete().then(() => {
+  //   try{
+  //    const docRef = dbfs.collection("Orders").doc(curUserId);
+  //   docRef.collection("addresses").doc(index).delete().then(() => {
 
-      toast.success("Address Removed");
+  //     toast.success("Address Removed");
 
-    }).catch((error) => {
+  //   }).catch((error) => {
 
-      console.error(error)
-    })
-  }catch(error){
-    console.error(error)
+  //     console.error(error)
+  //   })
+  // }catch(error){
+  //   console.error(error)
+  // }
+
   }
 
-  }
-
-  const totalAmount = cartData?.reduce((accumulator, currenValue) => {
-    return accumulator + currenValue.productprice;
-  }, 0);
+  // const totalAmount = cartData?.reduce((accumulator, currenValue) => {
+  //   return accumulator + currenValue.productprice;
+  // }, 0);
 
   return (
     <div className="max-w-[900px] min-w-[600px] grid lg:grid-cols-3 grid-cols-1 p-5 gap-4 mx-auto py-10 ">
@@ -352,7 +352,7 @@ function Addresses() {
           <div className="p-5">
             <div className="flex justify-between">
               <h2>Price ({cartData.length})</h2>
-              <h2>₹ {totalAmount}</h2>
+              {/* <h2>₹ {totalAmount}</h2> */}
             </div>
 
             <div className="flex justify-between pt-5">
@@ -365,7 +365,7 @@ function Addresses() {
 
           <div className="p-5 flex justify-between">
             <h2>Total Amount</h2>
-            <h2>₹ {totalAmount + 40}</h2>
+            {/* <h2>₹ {totalAmount + 40}</h2> */}
           </div>
 
           <div className={`${btnopen ? "flex" : "hidden"} mt-3`}>
