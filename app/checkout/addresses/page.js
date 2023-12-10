@@ -72,34 +72,21 @@ function Addresses() {
 
 
     useEffect(() => {
-
-      if(curUserId){
-
-          try{
-
+      if (curUserId) {
+        try {
           const colRef = dbfs.collection("Orders").doc(curUserId);
           colRef.collection("addresses").onSnapshot((snapshot) => {
-
-            const arr = []
-            snapshot.forEach((curData) => {
-
-              arr.push({
-                curElm: curData.data()
-              })
-            })
-            setAddressData(arr)
-
-          })
-        }catch(error){
-          console.error(error)
+            const arr = snapshot.docs.map((curData) => ({
+              curElm: curData.data()
+            }));
+            setAddressData(arr); // Update the state with the new array
+          });
+        } catch (error) {
+          console.error(error);
         }
-
-
       }
-
-
-    }, [curUserId])
-
+    }, [curUserId]);
+    
 
   const gettingDetails = (e) => {
 
