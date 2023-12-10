@@ -9,7 +9,6 @@ import {toast, Toaster} from "react-hot-toast";
 import { Button } from "@material-tailwind/react";
 import Addressbox from "@/app/addressbox";
 import Newaddress from "@/app/newaddress";
-import { doc } from "firebase/firestore";
 
 function Addresses() {
 
@@ -321,9 +320,9 @@ function Addresses() {
           </div> 
 
           </div>
-          {
+          {/* {
              index === i && open ? <Addressbox curUser={curUserId} index = {i} sendingInputData={curElm}  sendDatatoChild={gettingChildData} /> : null
-          }
+          } */}
           </div>
           </div>
         )
@@ -335,10 +334,10 @@ function Addresses() {
 
        <div className=" border-[1px] border-gray-300 border-solid rounded mt-3">
 
-        {
+        {/* {
            newAddBtn ? <Newaddress curUserId={curUserId} cancelBtn={gettingNewAddData}/> :  <h1 className="text-pink-400 font-semibold p-4 cursor-pointer" onClick={newAddress}>+ Add New Address</h1>
 
-        }
+        } */}
        </div>
 
       </div>
