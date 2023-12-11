@@ -29,16 +29,16 @@ function Search() {
         if (i.trim !== "") {
           let queryByCategory = dbfs
             .collection("AllProducts")
-            .where("category", "array-contains", i.trim());
+            .where("category", "array-contains", i.trim().toLocaleLowerCase());
           let queryByBrandCategory = dbfs
             .collection("AllProducts")
-            .where("categoryBrand", "array-contains", i.trim());
+            .where("categoryBrand", "array-contains", i.trim().toLocaleLowerCase());
           let queryBySearchQuery = dbfs
             .collection("AllProducts")
-            .where("searchQuery", "array-contains", i.trim());
+            .where("searchQuery", "array-contains", i.trim().toLocaleLowerCase());
           let queryByBrand = dbfs
             .collection("AllProducts")
-            .where("brand", "==", i.trim());
+            .where("brand", "==", i.trim().toLocaleLowerCase());
 
           const snapshotCategory = await queryByCategory.limit(5).get();
           const snapshotBrandCategory = await queryByBrandCategory

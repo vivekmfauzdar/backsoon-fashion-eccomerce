@@ -48,8 +48,8 @@ function Topcategories() {
 
   return (
     <div>
-      <div className="">
-        <h1 className="text-xl font-semibold mb-5 pl-2">Top Categories</h1>
+      <div className="pt-10">
+        <h1 className="text-2xl font-semibold mb-5 pl-2">Top Categories</h1>
         <div className="grid md:grid-cols-3  grid-cols-2 justify-items-center gap-y-8">
           {data.map((elm, index) => {
             return (

@@ -13,9 +13,9 @@ function Footer() {
           <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
             <div className="lg:w-1/3">
               <Link href="/" className="">
-                <div className="w-[200px]">
-                  <Image src={logo} alt="logo" width={400} height={400}/>
-                  <p className="text-[1rem] pt-2">
+                <div className="w-[300px]">
+                  <Image src={logo} alt="logo" className="w-[250px]" width={400} height={400}/>
+                  <p className="text-xl lg:text-base pt-2">
                     Backsoon is your one biggest online shop to fulfill your
                     fashion needs but also within your pocket.
                   </p>
@@ -24,10 +24,10 @@ function Footer() {
             </div>
             <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
               <div className="space-y-3">
-                <h3 className="tracki uppercase dark:text-gray-700">
+                <h3 className="uppercase text-lg lg:text-base dark:text-gray-700">
                   Online Shopping
                 </h3>
-                <ul className="space-y-1">
+                <ul className="space-y-1 text-xl lg:text-base">
                   <li className="">
                     <Link href="/tshirts">Tshirts</Link>
                   </li>
@@ -42,11 +42,12 @@ function Footer() {
                   </li>
                 </ul>
               </div>
+              
               <div className="space-y-3">
-                <h3 className="tracki uppercase dark:text-gray-700">
+                <h3 className="tracki text-lg lg:text-base uppercase dark:text-gray-700">
                   Important Links
                 </h3>
-                <ul className="space-y-1">
+                <ul className="space-y-1 text-xl lg:text-base">
                   <li>
                     <Link href="/support">Support</Link>
                   </li>
@@ -63,8 +64,8 @@ function Footer() {
                 </ul>
               </div>
               <div className="space-y-3">
-                <h3 className="uppercase dark:text-gray-700">Company</h3>
-                <ul className="space-y-1">
+                <h3 className="uppercase dark:text-gray-700 text-xl lg:text-base">Company</h3>
+                <ul className="space-y-1 text-xl lg:text-base">
                   <li>
                     <Link href="/privacypolicy">Privacy Policy</Link>
                   </li>

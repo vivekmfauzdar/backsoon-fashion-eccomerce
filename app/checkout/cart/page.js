@@ -83,21 +83,21 @@ function Bag() {
               <div className="lg:col-span-2">
                 <div className="flex justify-between gap-3 p-5 border-2 border-solid rounded">
                   <div>
-                    <Image className="w-[5rem]" src={curData?.images} width={200} height={200} />
+                    <Image className="w-[5rem]" src={curData?.images} width={200} height={200}  alt="product-images"/>
                   </div>
                   <div className="">
-                    <h1 className="font-semibold">{curData?.brand}</h1>
+                    <h1 className="font-semibold text-xl lg:text-base">{curData?.brand}</h1>
                     <Link className="hover:text-blue-600 hover:underline" href={{pathname : `/product/${curData.id}`, query: {category: curData.category}}}>
 
-                    <h1 className="">{curData?.title}</h1>
+                    <h1 className="text-xl lg:text-base">{curData?.title}</h1>
                     </Link>
-                    <h1 className="font-semibold">₹ {curData?.productprice}</h1>
-                    <span className="text-[1rem]">14 days return availabe</span>
+                    <h1 className="font-semibold text-xl lg:text-base">₹ {curData?.productprice}</h1>
+                    <span className="text-xl lg:text-base">14 days return availabe</span>
 
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 pt-4">
                       <div className="font-semibold rounded-full flex items-center justify-center w-[24px] h-[24px] border-2 border-solid select-none">
                         <span
-                          className=" font-semibold text-xl cursor-pointer"
+                          className=" font-semibold lg:text-xl text-2xl cursor-pointer"
                           onClick={() =>
                             changeProductCount(index, "-", curData.rightprice)
                           }
@@ -105,12 +105,12 @@ function Bag() {
                           -
                         </span>
                       </div>
-                      <span className="border-solid border-2 px-4 rounded selection:">
+                      <span className="border-solid border-2 text-xl lg:text-base px-4 rounded selection:">
                         {curData?.productCount}
                       </span>
                       <div className="font-semibold rounded-full flex items-center justify-center w-[24px] h-[24px] border-2 border-solid select-none">
                         <span
-                          className=" font-semibold text-xl cursor-pointer select-none"
+                          className=" font-semibold lg:text-xl text-2xl cursor-pointer select-none"
                           onClick={() =>
                             changeProductCount(index, "+", curData.rightprice)
                           }
@@ -135,17 +135,17 @@ function Bag() {
 
                 <div className="shadow p-5">
                   <div className="p-5">
-                    <h1 className="font-semibold">Price Details</h1>
+                    <h1 className="font-semibold text-2xl lg:text-xl">Price Details</h1>
                   </div>
                   <hr />
 
                   <div className="p-5">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between text-2xl lg:text-xl">
                       <h2>Price ({bagData.length} items)</h2>
                       <h2>₹{totalAmount}</h2>
                     </div>
 
-                    <div className="flex justify-between pt-5">
+                    <div className="flex justify-between pt-5 text-2xl lg:text-xl">
                       <h2>Delivery Charges</h2>
                       <h2>₹40</h2>
                     </div>
@@ -153,7 +153,7 @@ function Bag() {
 
                   <hr />
 
-                  <div className="p-2 flex justify-between">
+                  <div className="p-2 flex justify-between text-2xl lg:text-xl">
                     <h2>Total Amount</h2>
                     <h2>₹{totalAmount + 40}</h2>
                   </div>
@@ -175,14 +175,14 @@ function Bag() {
           );
         })
       ) : (
-        <div className="py-[50px]">
+        <div className="py-[50px] h-[60vh] flex items-center justify-center flex-col">
           <Image
             src={shoppingbag}
             className="w-[100px] mx-auto"
             width={200}
-            height={100}
+            height={100} alt="image"
           />
-          <h2 className="text-center text-[14px]">
+          <h2 className="text-center text-xl lg:text-[1rem]">
             There is nothing in your Bag. Add some items.
           </h2>
         </div>
@@ -192,17 +192,17 @@ function Bag() {
 
                 <div className="shadow p-5">
                   <div className="p-5">
-                    <h1 className="font-semibold">Price Details</h1>
+                    <h1 className="font-semibold text-2xl lg:text-xl">Price Details</h1>
                   </div>
                   <hr />
 
                   <div className="p-5">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between text-2xl lg:text-xl">
                       <h2>Price ({bagData.length} items)</h2>
                       <h2>₹{totalAmount}</h2>
                     </div>
 
-                    <div className="flex justify-between pt-5">
+                    <div className="flex justify-between pt-5 text-2xl lg:text-xl">
                       <h2>Delivery Charges</h2>
                       <h2>₹40</h2>
                     </div>
@@ -210,16 +210,16 @@ function Bag() {
 
                   <hr />
 
-                  <div className="p-2 flex justify-between">
+                  <div className="p-5 flex justify-between text-2xl lg:text-xl">
                     <h2>Total Amount</h2>
                     <h2>₹{totalAmount + 40}</h2>
                   </div>
 
                   <div className="mt-5">
-                    {curUser ? <Link href="/checkout/addresses"> <button className="bg-blue-400 text-white rounded p-2 w-full">
+                    {curUser ? <Link href="/checkout/addresses"> <button className="bg-blue-400 text-white rounded p-5 text-xl w-full">
                       Place Order
                     </button> </Link>  : <Link href={{pathname: "/login", query: {reference : "thisisfromcart"}}}>
-                    <button className="bg-blue-400 text-white rounded p-2 w-full">
+                    <button className="bg-blue-400 text-white text-xl rounded p-5 w-full">
                       Place Order
                     </button>
                     </Link>}

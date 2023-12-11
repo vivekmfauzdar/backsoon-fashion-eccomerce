@@ -578,7 +578,7 @@ function Details() {
 
               {/* This is similiar products code */}
               <div>
-                <h1 className="text-xl font-semibold pt-5 pl-5">
+                <h1 className="text-3xl lg:text-2xl font-semibold pt-5 pl-5">
                   Similiar Products
                 </h1>
                 <div className="m-10 mt-5">
@@ -592,33 +592,33 @@ function Details() {
                             query: { category: curElm.category },
                           }}
                         >
-                          <div className="shadow-lg max-auto cursor-pointer m-1">
+                          <div className="shadow-lg rounded-lg max-auto cursor-pointer pt-5 pb-5">
                             <Image
                               src={curElm.images[0]}
-                              className="lg:w-[270px] lg:h-[16rem] w-[250px] h-[20rem]"
+                              className="lg:w-[270px] lg:h-[16rem] w-[18rem] h-[20rem]"
                               width={600}
                               height={600}
                               alt="product-image"
                             />
-                            <h1 className="font-semibold pl-2">
+                            <h1 className="font-semibold pl-2 text-xl lg:text-base">
                               {curElm.brand}
                             </h1>
-                            <h2 className="pl-2">
+                            <h2 className="pl-2 text-xl lg:text-base">
                               {shortentitle(curElm.title, 20)}
                             </h2>
-                            <div className="flex gap-2 pl-2">
+                            <div className="flex gap-1 pl-2">
                               <h3 className="font-semibold">
                                 ₹{curElm.discountedprice}
                               </h3>
-                              <h3 className="line-through	">
+                              <h3 className="line-through">
                                 ₹{curElm.realprice}
                               </h3>
-                              <h3 className="text-orange-400	">
-                                {getOffPercent(
+                              <h3 className="text-green-400">
+                                ({getOffPercent(
                                   curElm.discountedprice,
                                   curElm.realprice
                                 )}
-                                % OFF
+                                % OFF)
                               </h3>
                             </div>
                           </div>

@@ -31,14 +31,14 @@ function Headcategories() {
           breakpoint: 700,
           settings: {
             slidesToShow: 5, // Adjust for smaller screens
-            slidesToScroll: 1,
+            slidesToScroll: 3,
           }
         },
         {
           breakpoint: 400,
           settings: {
             slidesToShow: 4, // Adjust for smaller screens
-            slidesToScroll: 1,
+            slidesToScroll: 3,
           }
         },
         // Add more responsive breakpoints if needed
@@ -109,7 +109,7 @@ function Headcategories() {
                 width={100}
                 height={100}
               />
-              <h2 className='text-[1rem] lg:text-sm'>{curElm.title}</h2>
+              <h2 className='text-xl lg:text-sm'>{curElm.title}</h2>
             </div>
           </Link>
         ))}

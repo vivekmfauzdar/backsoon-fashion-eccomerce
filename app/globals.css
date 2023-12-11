@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities; 
 
+
 .buttons {
     padding: 2px;
     border-radius: 2px;

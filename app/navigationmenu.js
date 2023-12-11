@@ -21,6 +21,7 @@ import watch from "./Pictures/smart-watch.png";
 import hoodie from "./Pictures/ihoodie2.png";
 import tshirt from "./Pictures/tshirt.png";
 import sunglass from "./Pictures/sunglass.png";
+import hi from './Images/hi.png'
 
 function navigationmenu() {
   const [open, setOpen] = useState(false);
@@ -29,6 +30,7 @@ function navigationmenu() {
   const [cartData, setCartData] = useState([]);
   const [userUid, setUserUid] = useState("");
   const [userName, setUserName] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
 
   const Links = [
     { name: "My Profile", link: "/account" },
@@ -49,6 +51,13 @@ function navigationmenu() {
     { name: "Sunglasses", img: sunglass, link: "/sunglasses" },
     { name: "Watches", img: watch, link: "/watches" },
   ];
+
+  useEffect(() => {
+
+    if(searchInput.length === ""){
+      toast.success("Input field empty")
+    }
+  }, [searchInput])
   // getting the current user
   useEffect(() => {
     const auth = getAuth();
@@ -82,6 +91,7 @@ function navigationmenu() {
             if (snapshot.exists) {
               const name = snapshot.data();
               setUserName(name.fname);
+              setPhoneNum(name.phoneNum)
             }
           });
         }
@@ -153,9 +163,16 @@ function navigationmenu() {
                 {/* LOGIN/SIGNUP NAVIGATION IF USER NOT LOG IN/USER NAME IF LOGIN */}
                 <li className="pl-9 pb-3">
                   {userUid !== null ? (
-                    <h1 className="text-gray-500 py-2 text-xl">
+                    <div className="flex items-center gap-2">
+                    <Image src={hi} className="w-[80px]" alt="hi-icon"/>
+                    <div>
+                    <h1 className="font-semibold py-2 text-2xl">
                       Hi, {userName}
                     </h1>
+                    <h1 className=" text-2xl">{phoneNum}</h1>
+                    </div>
+
+                    </div>
                   ) : (
                     <div>
                       <h1 className="font-semibold py-2 text-xl">
@@ -163,7 +180,7 @@ function navigationmenu() {
                       </h1>
 
                       <Link href="/login" className="cursor-pointer">
-                        <h1 className="text-gray-500 py-2 text-xl">
+                        <h1 className="py-2 text-2xl">
                           Login/SignUp
                         </h1>
                       </Link>
@@ -180,7 +197,7 @@ function navigationmenu() {
                         href={cur.link}
                         className="flex items-center justify-between gap-2 pr-4 pt-5 pb-2 pl-9"
                       >
-                        <h1 className="text-xl">{cur.name}</h1>
+                        <h1 className="text-2xl">{cur.name}</h1>
                         <Image
                           src={cur.img}
                           width={300}
@@ -200,23 +217,23 @@ function navigationmenu() {
                     {Links.map((link, index) => (
                       <li
                         key={index}
-                        className="lg:ml-8 text-xl lg:my-0 my-7 pl-9"
+                        className="lg:ml-8 text-2xl lg:my-0 my-7 pl-9"
                       >
                         <Link
                           href={link.link}
                           onClick={() => setOpen(false)}
-                          className="text-gray-800 hover:text-gray-400 duration-500"
+                          className="hover:text-gray-400 duration-500"
                         >
                           {link.name}
                         </Link>
                       </li>
                     ))}
 
-                    <li className="text-[1rem] my-7">
+                    <li className="text-2xl my-7">
                       <Link
                         onClick={(e) => logout()}
                         href="/"
-                        className="text-gray-800 text-xl hover:text-gray-400 duration-500 pl-9"
+                        className="text-2xl hover:text-gray-400 duration-500 pl-9"
                       >
                         LogOut
                       </Link>
@@ -234,7 +251,7 @@ function navigationmenu() {
             }`}
           >
             <input
-              className="border-[2px] caret-blue-gray-400 rounded outline-none py-2 pl-4 w-[20rem] border-gray-300"
+              className="border-[2px] caret-blue-gray-400 rounded outline-none py-3 pl-4 w-[25rem] border-gray-300 text-xl"
               placeholder="Search clothes here..."
               type="text"
               value={searchInput}
@@ -245,7 +262,7 @@ function navigationmenu() {
               <h2 className="cursor-pointer text-xl caret-transparent">
                 Search
               </h2>
-            </Link>
+            </Link> 
           </div>
         </div>
       </div>

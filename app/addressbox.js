@@ -7,6 +7,7 @@ import { Input } from "@material-tailwind/react";
 import { dbfs } from './firebase';
 import {v4} from "uuid"
 import { Toaster, toast } from 'react-hot-toast';
+import { fontSize } from '@mui/system';
 
 
 function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
@@ -144,23 +145,26 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
 
       <Toaster toastOptions={{duration:2000}}/>
        <div className="col-span-2 flex flex-col gap-3 border-[1px] border-solid rounded p-5">
-        <h1 className="py-3">Contact Details</h1>
+        <h1 className="py-3 text-2xl">Contact Details</h1>
 
         {
 
       <div className='flex flex-col gap-3'>
         
-        <Input
-          size="md" name="name"
-          className="broder-[2px]" value={data.name}
-          label="Name*"
+        <div>
+        <input
+          name="name"
+          className="border-[1px] border-solid border-gray-400 w-full rounded p-3" value={data.name}
+          label="Name*" 
           onChange={gettingDetails}
         />
          <span className='text-red-500 text-[12px]'>{formErr.name} </span>
+        </div>
+        
 
         <Input
-          size="md" name="phoneno" type='number'
-          className="broder-[2px]" value={data.phoneno}
+          size="lg" name="phoneno" type='number'
+          className="border-[2px]" value={data.phoneno}
           label="Mobile No*"
           onChange={gettingDetails}
         />
@@ -170,7 +174,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
 
         <Input
           size="md" name="address"
-          className="broder-[2px]" value={data.address}
+          className="border-[2px]" value={data.address}
           label="Address(House no., Building, Street)*"
           onChange={gettingDetails}
         />
@@ -178,7 +182,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
 
         <Input
           size="md" name="locality"
-          className="broder-[2px]" value={data.locality}
+          className="border-[2px]" value={data.locality}
           label="Locality/Town*"
           onChange={gettingDetails}
         />
@@ -186,7 +190,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
        
         <Input
           size="md" name="pincode"
-          className="broder-[2px]" value={data.pincode}
+          className="border-[2px]" value={data.pincode}
           label="Pincode*"
           onChange={gettingDetails}
         />
@@ -194,7 +198,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
 
         <Input
           size="md" name="city"
-          className="broder-[2px]" value={data.city}
+          className="border-[2px]" value={data.city}
           label="City/District*"
           onChange={gettingDetails}
         />
@@ -202,7 +206,7 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
 
         <Input
           size="md" name="state"
-          className="broder-[2px]" value={data.state}
+          className="border-[2px]" value={data.state}
           label="State*"
           onChange={gettingDetails}
         />
@@ -210,14 +214,14 @@ function Addressbox({curUser, index, sendingInputData ,sendDatatoChild}) {
        
         <Input
           size="md" name="landmark"
-          className="broder-[2px]" value={data.landmark}
+          className="border-[2px]" value={data.landmark}
           label="Landmark"
           onChange={gettingDetails}
         />
 
         <Input
           size="md" name="alternatemobile" type='number'
-          className="broder-[2px]" value={data.alternatemobile}
+          className="border-[2px]" value={data.alternatemobile}
           label="Aleternate Mobile(Optional)"
           onChange={gettingDetails}
         />

@@ -54,7 +54,7 @@ function Homerooms() {
   return (
     <>
       <div className="w-full">
-        <div className="lg:max-w-[1270px] min-w-[600px] max-w-[1023px] mx-auto text-black">
+        <div className="lg:max-w-[1270px] min-w-[600px] max-w-[600px] mx-auto text-black">
           <Navigation />
           <Headcategories />
 

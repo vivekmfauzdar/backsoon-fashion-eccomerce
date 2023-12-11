@@ -339,7 +339,7 @@ function Jeans() {
                   query: { category: curElm.colletionN },
                 }}
               >
-                <div className="shadow cursor-pointer">
+                <div className="shadow rounded-lg cursor-pointer pb-5">
                   <Image
                     src={curElm.images[0]}
                     className="lg:w-full w-[270px] h-[20rem] lg:h-[16rem]"
@@ -347,12 +347,12 @@ function Jeans() {
                     height={60}
                     alt="product-image"
                   />
-                  <h1 className="font-semibold pl-2">{curElm.brand}</h1>
-                  <h2 className="pl-2">{shortentitle(curElm.title, 20)}</h2>
+                  <h1 className="font-semibold pl-2 text-xl lg:text-base">{curElm.brand}</h1>
+                  <h2 className="pl-2 text-xl lg:text-base">{shortentitle(curElm.title, 20)}</h2>
                   <div className="flex gap-2 pl-2">
-                    <h3 className="font-semibold">₹{curElm.discountedprice}</h3>
-                    <h3 className="line-through	">₹{curElm.realprice}</h3>
-                    <h3 className="text-green-400	">
+                    <h3 className="font-semibold text-xl lg:text-base">₹{curElm.discountedprice}</h3>
+                    <h3 className="line-through	text-xl lg:text-base">₹{curElm.realprice}</h3>
+                    <h3 className="text-green-400	text-xl lg:text-base">
                       ({getOffPercent(curElm.discountedprice, curElm.realprice)}
                       % OFF)
                     </h3>

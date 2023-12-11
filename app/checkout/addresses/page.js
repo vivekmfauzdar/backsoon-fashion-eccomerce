@@ -247,36 +247,36 @@ function Addresses() {
       </div> */}
 
       <div className="col-span-2">
-        <h1 className="text-xl font-semibold">Select Delivery Address</h1>
+        <h1 className="text-2xl lg:text-2xl font-semibold py-5">Select Delivery Address</h1>
 
         {addressData.length !== 0
           ? addressData.map(({ curElm }, i) => {
               return (
-                <div key={i}>
-                  <div className={`shadow-lg rounded-lg p-4`}>
+                <div key={i} className="py-4">
+                  <div className={`shadow rounded-lg p-4`}>
                     <div
                       className={`${index === i && open ? "hidden" : "flex"}`}
                     >
                       <div>
-                        <div className={`flex gap-3`} role="group">
+                        <div className={`flex gap-3 items-center`} role="group">
                           <input
                             type="radio"
-                            className="accent-red-400"
+                            className="accent-red-400 w-6 h-6"
                             name="address"
                             onChange={() => getButtons(i, curElm)}
                           />
-                          <h1 className="font-semibold">{curElm?.name}</h1>
-                          <span className="border-[1px] p-1 rounded border-green-500 text-green-500 text-[12px]">
+                          <h1 className="font-semibold text-2xl lg:text-base">{curElm?.name}</h1>
+                          <span className="border-[1px] p-1 rounded border-green-500 text-green-500 text-xl lg:text-base">
                             Home
                           </span>
                         </div>
 
                         <div className="py-2">
-                          <p className="text-[14px]">{`${curElm?.address}, ${curElm?.city}, ${curElm?.landmark}, ${curElm?.locality}, ${curElm?.pincode}`}</p>
+                          <p className="text-xl lg:text-base">{`${curElm?.address}, ${curElm?.city}, ${curElm?.landmark}, ${curElm?.locality}, ${curElm?.pincode}`}</p>
                         </div>
 
                         <div>
-                          <h1 className="text-[14px]">
+                          <h1 className="text-xl lg:text-base">
                             Mobile: {curElm?.phoneno}
                           </h1>
                         </div>
@@ -287,13 +287,13 @@ function Addresses() {
                           }`}
                         >
                           <button
-                            className="px-2 py-2"
+                            className="px-2 py-2 bg-green-400 text-white rounded text-xl lg:text-base"
                             onClick={() => openClose(i)}
                           >
                             Edit
                           </button>
                           <button
-                            className="px-2 py-2"
+                            className="px-2 py-2 bg-red-400 text-white rounded text-xl lg:text-base"
                             onClick={() => removeAddress(curElm.id)}
                           >
                             Remove
@@ -315,12 +315,12 @@ function Addresses() {
             })
           : null}
 
-        <div className=" border-[1px] border-gray-300 border-solid rounded mt-3">
+        <div className=" border-[2px] border-gray-300 border-solid rounded mt-3">
           {newAddBtn ? (
             <Newaddress curUserId={curUserId} cancelBtn={gettingNewAddData} />
           ) : (
             <h1
-              className="text-pink-400 font-semibold p-4 cursor-pointer"
+              className="text-pink-400 font-semibold p-4 cursor-pointer text-2xl lg:text-base"
               onClick={newAddress}
             >
               + Add New Address
@@ -333,17 +333,17 @@ function Addresses() {
         <div>
           <div className="shadow p-5">
             <div className="p-5">
-              <h1 className="font-semibold">Price Details</h1>
+              <h1 className="font-semibold text-2xl lg:text-base">Price Details</h1>
             </div>
             <hr />
 
             <div className="p-5">
-              <div className="flex justify-between">
+              <div className="flex justify-between text-2xl lg:text-base">
                 <h2>Price ({cartData.length})</h2>
                 <h2>₹ {totalAmount}</h2>
               </div>
 
-              <div className="flex justify-between pt-5">
+              <div className="flex justify-between pt-5 text-2xl lg:text-base">
                 <h2>Delivery Charges</h2>
                 <h2>₹40</h2>
               </div>
@@ -351,14 +351,14 @@ function Addresses() {
 
             <hr />
 
-            <div className="p-5 flex justify-between">
+            <div className="p-5 flex justify-between text-2xl lg:text-base">
               <h2>Total Amount</h2>
               <h2>₹ {totalAmount + 40}</h2>
             </div>
 
             <div className={`${btnopen ? "flex" : "hidden"} mt-3`}>
               <button
-                className={`bg-blue-400 text-white rounded p-2 w-full`}
+                className={`bg-blue-400 text-white rounded p-5 lg:p-2 text-2xl lg:text-base w-full`}
                 onClick={placeOrder}
               >
                 Continue

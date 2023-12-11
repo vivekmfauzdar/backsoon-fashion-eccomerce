@@ -23,21 +23,16 @@ function MyReviews() {
     const curUser = auth.onAuthStateChanged((user) => {
       if (user) {
         setCurUserUid(user.uid);
-
-        const FetchData = () => {
-          const arr = [];
           const db = dbfs.collection("Orders").doc(user.uid);
           db.collection("Reviews").onSnapshot((snapshot) => {
+            const arr = [];
             snapshot.forEach((curReview) => {
               arr.push({
                 curReview: curReview.data(),
               });
-              setFirebaseData(arr);
             });
+            setFirebaseData(arr);
           });
-        };
-
-        FetchData();
       } else {
         setCurUserUid(null);
       }
@@ -77,7 +72,7 @@ function MyReviews() {
     <div className="max-w-[700px] min-w-[600px] mx-auto p-5">
 
       <Toaster toastOptions={{duration:2000}}/>
-      <h2 className="text-xl font-semibold py-5 lg:py-0">
+      <h2 className="text-2xl lg:text-2xl font-semibold py-5 lg:py-0">
         My Reviews({firebaseData.length})
       </h2>
 
@@ -91,7 +86,7 @@ function MyReviews() {
                       src={curReview.imageurl}
                       width={400}
                       height={400}
-                      className="w-[5rem] h-[5rem]" alt="image"
+                      className="w-[5rem] h-[5rem]" alt="product-image"
                     />
                   </div>
                   <div className="col-span-4">
@@ -127,11 +122,11 @@ function MyReviews() {
               </div>
             );
           })
-        :    <div className='py-10'>
-        <div className='flex flex-col items-center gap-2 justify-center'>
+        :    <div className=''>
+        <div className='flex flex-col h-[60vh] items-center gap-2 justify-center'>
           <Image className='w-[4rem]' src={reviews} width={400} height={400} alt="image"/>
-          <h1 className='font-semibold text-md'>You have no reviews</h1>
-          <p className='text-sm'>You can add review once you have ordered something.</p>
+          <h1 className='font-semibold text-xl lg:text-md'>You have no reviews</h1>
+          <p className='text-md'>You can add review once you have ordered something.</p>
         </div>
        </div>}
     </div>

@@ -133,7 +133,7 @@ function Orders() {
         })}
 
       {noData && (
-        <div className="mt-20 text-center mb-5">
+        <div className="mt-20 flex justify-center items-center flex-col text-center mb-5">
           <Image
             className="w-[150px] mx-auto"
             src={box}

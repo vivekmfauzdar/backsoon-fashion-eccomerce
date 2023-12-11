@@ -55,7 +55,7 @@ function Ourcollection() {
     <div>
       <div className="mx-auto text-black">
         <div>
-          <h1 className=" text- font-semibold text-2xl pl-5">
+          <h1 className="font-semibold text-2xl pl-5">
             Our
             <span className="font-semibold text-2xl text-pink-400">
               Collection
@@ -138,15 +138,15 @@ function Ourcollection() {
                       </div>
                     </div>
 
-                    <h1 className="font-semibold pl-2">{curElm.brand}</h1>
-                    <h2 className="text-[13px] pl-2">
+                    <h1 className="font-semibold pl-2 text-xl">{curElm.brand}</h1>
+                    <h2 className="text-xl pl-2">
                       {shortentitle(curElm.title, 20)}
                     </h2>
                     <div className="flex gap-2 pl-2">
-                      <h3 className="font-semibold">
+                      <h3 className="font-semibold text-xl">
                         ₹{curElm.discountedprice}
                       </h3>
-                      <h3 className="line-through	">₹{curElm.realprice}</h3>
+                      <h3 className="line-through text-xl">₹{curElm.realprice}</h3>
                       <h3 className="text-green-400	">
                         {getOffPercent(
                           curElm.discountedprice,

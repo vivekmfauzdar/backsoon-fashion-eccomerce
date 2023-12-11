@@ -163,8 +163,9 @@ function Shoes() {
         </div>
       )}
 
-      {/* CODE FOR FILTERS FOR DESKTOP VIEW */}
       <div className="grid lg:grid-cols-4 grid-cols-1">
+
+            {/* CODE FOR FILTERS FOR DESKTOP VIEW */}
         {loaderEnable === false && (
           <div className="lg:block hidden pt-3">
             <h1 className="text-2xl">Filters</h1>
@@ -328,7 +329,7 @@ function Shoes() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 lg:col-span-3 grid-cols-2 justify-items-center pt-5 gap-5">
+        <div className="grid lg:grid-cols-3 lg:col-span-3 grid-cols-2 justify-items-center pt-5 pb-5 gap-5">
           {firebaseData.map((curElm) => {
             return (
               <Link
@@ -338,7 +339,7 @@ function Shoes() {
                   query: { category: curElm.colletionN },
                 }}
               >
-                <div className="shadow-lg cursor-pointer pb-5">
+                <div className="shadow-lg rounded-lg cursor-pointer py-2 pb-5">
                   <Image
                     src={curElm.images[0]}
                     className="lg:w-full w-[270px] h-[20rem] lg:h-[16rem]"
@@ -353,9 +354,9 @@ function Shoes() {
                     {shortentitle(curElm.title, 20)}
                   </h2>
                   <div className="flex gap-2 pl-2">
-                    <h3 className="font-semibold">₹{curElm.discountedprice}</h3>
-                    <h3 className="line-through	">₹{curElm.realprice}</h3>
-                    <h3 className="text-green-400	">
+                    <h3 className="font-semibold text-xl lg:text-base">₹{curElm.discountedprice}</h3>
+                    <h3 className="line-through	text-xl lg:text-base">₹{curElm.realprice}</h3>
+                    <h3 className="text-green-400	text-xl lg:text-base">
                       ({getOffPercent(curElm.discountedprice, curElm.realprice)}
                       % OFF)
                     </h3>

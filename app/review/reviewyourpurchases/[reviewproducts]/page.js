@@ -22,6 +22,8 @@ function Reviewproducts() {
   const search = usePathname();
   const id = search.split("/").at(3);
 
+  console.log(id)
+
   const getText = (rated) => {
     const textOptions = {
       1: { text: "Useless", color: "red-500" },
@@ -90,32 +92,14 @@ function Reviewproducts() {
     setData({ ...data, [event.target.name]: event.target.value });
   };
 
-  const submitReview = () => {
-    setFormErr(validation(data));
-    setIsSubmit(true);
-  };
+  const submitReview = (e) => {
 
-  const validation = (value) => {
-    const errors = {};
-
-    if (!value.title) {
-      errors.title = "Title cannot be empty!";
-    } else if (value.title.length > 40) {
-      errors.title = "Title cant be more than 40 characters";
-    }
-
-    if (!value.description) {
-      errors.description = "Description cannot be empty!";
-    }
-    return errors;
-  };
-
-  useEffect(() => {
+    e.preventDefault()
 
     const fullRatingDetails = {
       ...data,
       rating: rated,
-      name: orders.name,
+      name: orders.userInfo.name,
       id: id,
       producttitle: orders.title,
       imageurl: orders.images,
@@ -127,7 +111,9 @@ function Reviewproducts() {
       }),
     };
 
-    if (Object.keys(formErr).length === 0 && isSubmit) {
+    console.log(fullRatingDetails)
+
+    if (data.title !== "" && data.description !== "") {
       const reviewCollection = dbfs
         .collection("Orders")
         .doc(curUserUid)
@@ -137,7 +123,7 @@ function Reviewproducts() {
         .set(fullRatingDetails)
         .then(() => {
           toast.success(
-            "Thank Yoy for your Review. Your Review has been Saved."
+            "Thank You for your Review. Your Review has been Saved."
           );
         })
         .catch((error) => {
@@ -148,7 +134,9 @@ function Reviewproducts() {
         "Required data fields are missing. Unable to set the document."
       );
     }
-  }, [formErr]);
+
+  };
+
 
   return (
     <div className="max-w-[970px] min-w-[600px] mx-auto py-10 p-5 select-none">
@@ -181,6 +169,7 @@ function Reviewproducts() {
         <h1 className={`font-semibold text-${color}`}>{text}</h1>
       </div>
 
+     <form action="" onSubmit={submitReview}>
       <div className="flex flex-col gap-3 py-5">
         <label htmlFor="title" className="font-semibold">
           Review Title
@@ -190,10 +179,9 @@ function Reviewproducts() {
           name="title"
           type="text"
           placeholder="Example: Easy to Use"
-          onChange={gettingInputs}
+          onChange={gettingInputs} required
           value={data.title}
         />
-        <span className="text-red-500 text-[12px]">{formErr.title} </span>
       </div>
 
       <div className="flex flex-col gap-3 pb-5">
@@ -207,20 +195,19 @@ function Reviewproducts() {
           cols="10"
           placeholder="Write something about product"
           rows="5"
-          value={data.description}
+          value={data.description} required
           onChange={gettingInputs}
         ></textarea>
-        <span className="text-red-500 text-[12px]">{formErr.description} </span>
       </div>
 
       <div>
-        <button
+        <button type="submit"
           className="bg-pink-400 text-white rounded w-full p-3"
-          onClick={submitReview}
         >
           Submit Review
         </button>
       </div>
+      </form>
     </div>
   );
 }
