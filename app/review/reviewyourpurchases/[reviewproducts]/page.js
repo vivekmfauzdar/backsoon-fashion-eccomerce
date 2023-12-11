@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Rating } from "@material-tailwind/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { getAuth } from "firebase/auth";
@@ -10,9 +9,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 function Reviewproducts() {
-  const [rated, setRated] = React.useState(4);
-  const [formErr, setFormErr] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [rated, setRated] = useState(4);
   const [orders, setOrders] = useState([]);
   const [curUserUid, setCurUserUid] = useState("");
   const [data, setData] = useState({
@@ -21,8 +18,6 @@ function Reviewproducts() {
   });
   const search = usePathname();
   const id = search.split("/").at(3);
-
-  console.log(id)
 
   const getText = (rated) => {
     const textOptions = {
@@ -98,7 +93,7 @@ function Reviewproducts() {
 
     const fullRatingDetails = {
       ...data,
-      rating: rated,
+      rating: 0,
       name: orders.userInfo.name,
       id: id,
       producttitle: orders.title,
@@ -165,8 +160,8 @@ function Reviewproducts() {
         </div>
       </div>
       <div className="flex items-center gap-2 font-bold text-blue-gray-500 pt-5 caret-transparent">
-        <Rating value={4} name="rating" onChange={(value) => setRated(value)} />
-        <h1 className={`font-semibold text-${color}`}>{text}</h1>
+        {/* <Rating value={4} name="rating" onChange={(value) => setRated(value)} />
+        <h1 className={`font-semibold text-${color}`}>{text}</h1> */}
       </div>
 
      <form action="" onSubmit={submitReview}>
