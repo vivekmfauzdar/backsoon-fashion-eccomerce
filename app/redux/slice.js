@@ -1,3 +1,5 @@
+"use client"
+
 const { createSlice, nanoid, current } = require("@reduxjs/toolkit");
 
 const initialState = {
