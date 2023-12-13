@@ -4,37 +4,15 @@ import { dbfs } from "@/app/firebase";
 import { getAuth } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { redirect } from "next/navigation";
 
 function Payments() {
-
-
-  const router = useRouter()
+  const router = useRouter();
   const [modeofPay, setModeOfPay] = useState("");
   const [products, setProducts] = useState([]);
   const [curUserId, setCurUserUid] = useState("");
-  const [userInfo, setUserInfo] = useState({})
-  const [selectedAddress, setSelectedAddress] = useState({});
-  const [selectedName, setSelectedName] = useState("");
-  const [selectedPhone, setSelectedPhone] = useState("");
-  const [selectedAddType, setSelectedAddType] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   const [price, setPrice] = useState([]);
-  const [productsData, setProductsData] = useState({
-    name: "",
-    title: "",
-    image: "",
-    brand: "",
-    price: "",
-    quantity: "",
-    name: "",
-    address: "",
-    phone: "",
-    time: "",
-    date: "",
-    total: "",
-    paymentMode: "",
-    id: "",
-  });
+ 
 
   // getting the current user
   useEffect(() => {
@@ -52,20 +30,18 @@ function Payments() {
 
   useEffect(() => {
     const cartData = localStorage.getItem("cartData");
-
-
     if (cartData) {
       setProducts(JSON.parse(cartData));
-    }else{
-      router.push("/")
+    } else {
+      router.push("/");
     }
   }, []);
 
   useEffect(() => {
     const selectedAddress = localStorage.getItem("Selected Address");
-    
+
     if (selectedAddress) {
-      setUserInfo(JSON.parse(selectedAddress))
+      setUserInfo(JSON.parse(selectedAddress));
     }
   }, []);
 
@@ -102,8 +78,6 @@ function Payments() {
     });
   };
 
- 
-
   // confirm Order Button CODE
   const confirmOrder = async () => {
     if (modeofPay === "") {
@@ -123,12 +97,12 @@ function Payments() {
             month: "long",
             day: "numeric",
           }),
-        
+
           orderStatus: "Pending",
           paymentMode: modeofPay,
           userInfo: userInfo,
           paymentId: "No Payment Id",
-          UID: curUserId
+          UID: curUserId,
         };
 
         dbfs
@@ -138,9 +112,9 @@ function Payments() {
           .doc(curProduct.id)
           .set(fullProductDetails)
           .then(() => {
-
-            router.push('/orders/successful')
+            router.push("/orders/successful");
             localStorage.removeItem("cartData");
+            localStorage.removeItem("newCartData");
           });
       });
     } else if (modeofPay === "Pay Through Online") {
@@ -182,7 +156,7 @@ function Payments() {
               paymentMode: modeofPay,
               userInfo: userInfo,
               paymentId: paymentId,
-              UID: curUserId
+              UID: curUserId,
             };
 
             dbfs
@@ -192,10 +166,10 @@ function Payments() {
               .doc(curProduct.id)
               .set(fullProductDetails)
               .then(() => {
-
-                router.push('/orders/successful')
+                router.push("/orders/successful");
 
                 localStorage.removeItem("cartData");
+                localStorage.removeItem("newCartData");
               });
           });
         },

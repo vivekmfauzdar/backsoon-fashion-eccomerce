@@ -91,7 +91,7 @@ function page() {
                             {curData?.title}
                           </h1>
                           <h1 className="font-semibold">
-                            ₹ {curData?.discountedprice}
+                            ₹{curData?.discountedprice}
                           </h1>
                           <span className="text-[12px]">
                             14 days return availabe

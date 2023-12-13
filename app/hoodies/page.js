@@ -151,7 +151,9 @@ function Hoddies() {
 
       {loaderEnable === false && (
         <div className="flex items-center justify-between pt-10">
-          <h1 className="text-3xl lg:text-2xl font-semibold pl-5 lg:pl-0">Hoodies</h1>
+          <h1 className="text-3xl lg:text-2xl font-semibold pl-5 lg:pl-0">
+            Hoodies
+          </h1>
 
           <span
             className="lg:hidden flex items-center pr-5"
@@ -343,7 +345,7 @@ function Hoddies() {
                     src={curElm?.images[0]}
                     className="lg:w-full w-[18rem] h-[20rem] lg:h-[16rem]"
                     width={200}
-                    height={60}
+                    height={200}
                     alt="product-images"
                   />
                   <h1 className="font-semibold pl-2 text-xl lg:text-base">
@@ -353,10 +355,15 @@ function Hoddies() {
                     {shortentitle(curElm.title, 20)}
                   </h2>
                   <div className="flex gap-2 pl-2">
-                    <h3 className="font-semibold text-xl lg:text-base">₹{curElm.discountedprice}</h3>
-                    <h3 className="line-through	text-xl lg:text-base">₹{curElm.realprice}</h3>
+                    <h3 className="font-semibold text-xl lg:text-base">
+                      ₹{curElm.discountedprice}
+                    </h3>
+                    <h3 className="line-through	text-xl lg:text-base">
+                      ₹{curElm.realprice}
+                    </h3>
                     <h3 className="text-green-400	text-xl lg:text-base">
-                     ( {getOffPercent(curElm.discountedprice, curElm.realprice)}%
+                      ({" "}
+                      {getOffPercent(curElm.discountedprice, curElm.realprice)}%
                       OFF)
                     </h3>
                   </div>

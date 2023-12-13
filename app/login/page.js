@@ -8,14 +8,12 @@ import { getAuth } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import password from "../Images/password.png";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useRouter } from "next/navigation";
 import Setprofile from "../setprofile/page";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import india from '../Images/india.png'
-
+import india from "../Images/india.png";
 
 function Login() {
   const searchParams = useSearchParams();
@@ -170,7 +168,15 @@ function Login() {
                   onChange={setOtp}
                   numInputs={6}
                   inputType="number"
-                  inputStyle={{borderWidth:1, borderRadius:4, width:30, height:30, borderColor:"black", borderStyle:"solid" }} skipDefaultStyles={true}
+                  inputStyle={{
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    width: 30,
+                    height: 30,
+                    borderColor: "black",
+                    borderStyle: "solid",
+                  }}
+                  skipDefaultStyles={true}
                   shouldAutoFocus={true}
                   renderSeparator={<span>-</span>}
                   renderInput={(props) => <input {...props} />}
@@ -218,21 +224,28 @@ function Login() {
               <div className="relative w-full">
                 <div class="relative text-gray-600 focus-within:text-gray-400">
                   <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                   
-                  <Image src={india} width={100} height={100} className="w-[30px]"/>
-                  <h4 className="text-black text-xl lg:text-base">+91</h4>
-
+                    <Image
+                      src={india}
+                      width={100}
+                      height={100}
+                      className="w-[30px]"
+                    />
+                    <h4 className="text-black text-xl lg:text-base">+91</h4>
                   </span>
                   <input
                     type="tel"
-                    name="q" maxLength={10} max={10}
+                    name="q"
+                    maxLength={10}
+                    max={10}
                     class="border-[1px] hover:border-2 border-solid border-gray-600 text-md text-black p-4 lg:p-3 w-full text-xl lg:text-base rounded-md pl-[4.8rem] lg:pl-[4.5rem] focus:outline-none  "
                     placeholder="Enter Phone Number"
-                    autocomplete="off" onChange={(e) =>{
-                      const num = e.target.value
-                      const numericValue = num.replace(/\D/g, '')
-                       setPh(numericValue)
-                       }} value={ph}
+                    autocomplete="off"
+                    onChange={(e) => {
+                      const num = e.target.value;
+                      const numericValue = num.replace(/\D/g, "");
+                      setPh(numericValue);
+                    }}
+                    value={ph}
                   />
                 </div>
                 {/* <PhoneInput

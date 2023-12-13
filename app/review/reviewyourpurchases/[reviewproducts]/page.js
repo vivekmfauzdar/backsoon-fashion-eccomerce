@@ -7,6 +7,8 @@ import { getAuth } from "firebase/auth";
 import { dbfs } from "@/app/firebase";
 import { Toaster, toast } from "react-hot-toast";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import starfill from "../../../Images/starfill.png";
+import star from "../../../Images/star.png";
 
 function Reviewproducts() {
   const [rated, setRated] = useState(4);
@@ -16,6 +18,8 @@ function Reviewproducts() {
     title: "",
     description: "",
   });
+  const [startNum, setStarNum] = useState();
+
   const search = usePathname();
   const id = search.split("/").at(3);
 
@@ -30,25 +34,30 @@ function Reviewproducts() {
     return textOptions[rated] || { text: "Excellent", color: "green-500" };
   };
 
+  const ar = [1, 2, 3, 4, 5];
+  const getNum = (n) => {
+    setStarNum(n);
+  };
+
   useEffect(() => {
     const auth = getAuth();
     const curUser = auth.onAuthStateChanged((user) => {
       if (user) {
         setCurUserUid(user.uid);
-        try{
-        const q = query(
-          collection(dbfs, "Orders", user.uid, "products"),
-          where("id", "==", id)
-        );
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            setOrders(doc.data());
+        try {
+          const q = query(
+            collection(dbfs, "Orders", user.uid, "products"),
+            where("id", "==", id)
+          );
+          const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              setOrders(doc.data());
+            });
           });
-        });
-      }catch(error){
-        console.error(error)
-      }
-    } else {
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
         setCurUserUid(null);
       }
     });
@@ -88,12 +97,11 @@ function Reviewproducts() {
   };
 
   const submitReview = (e) => {
-
-    e.preventDefault()
+    e.preventDefault();
 
     const fullRatingDetails = {
       ...data,
-      rating: 0,
+      rating: rated,
       name: orders.userInfo.name,
       id: id,
       producttitle: orders.title,
@@ -106,7 +114,7 @@ function Reviewproducts() {
       }),
     };
 
-    console.log(fullRatingDetails)
+    console.log(fullRatingDetails);
 
     if (data.title !== "" && data.description !== "") {
       const reviewCollection = dbfs
@@ -129,9 +137,7 @@ function Reviewproducts() {
         "Required data fields are missing. Unable to set the document."
       );
     }
-
   };
-
 
   return (
     <div className="max-w-[970px] min-w-[600px] mx-auto py-10 p-5 select-none">
@@ -161,47 +167,67 @@ function Reviewproducts() {
       </div>
       <div className="flex items-center gap-2 font-bold text-blue-gray-500 pt-5 caret-transparent">
         {/* <Rating value={4} name="rating" onChange={(value) => setRated(value)} />
-        <h1 className={`font-semibold text-${color}`}>{text}</h1> */}
+         */}
+        <div className="flex items-center gap-3">
+          {ar.map((cur) => {
+            return (
+              <Image
+                key={cur}
+                src={cur <= rated ? starfill : star}
+                className="w-[30px]"
+                width={400}
+                height={400}
+                onClick={() => setRated(cur)}
+                onMouseOver={() => setRated(cur)}
+                alt="start-image"
+              />
+            );
+          })}
+        </div>
+        <h1 className={`font-semibold text-${color}`}>{text}</h1>
       </div>
 
-     <form action="" onSubmit={submitReview}>
-      <div className="flex flex-col gap-3 py-5">
-        <label htmlFor="title" className="font-semibold">
-          Review Title
-        </label>
-        <input
-          className="outline-none p-5 border-[1px] border-solid border-black rounded"
-          name="title"
-          type="text"
-          placeholder="Example: Easy to Use"
-          onChange={gettingInputs} required
-          value={data.title}
-        />
-      </div>
+      <form action="" onSubmit={submitReview}>
+        <div className="flex flex-col gap-3 py-5">
+          <label htmlFor="title" className="font-semibold">
+            Review Title
+          </label>
+          <input
+            className="outline-none p-5 border-[1px] border-solid border-black rounded"
+            name="title"
+            type="text"
+            placeholder="Example: Easy to Use"
+            onChange={gettingInputs}
+            required
+            value={data.title}
+          />
+        </div>
 
-      <div className="flex flex-col gap-3 pb-5">
-        <label htmlFor="description" className="font-semibold">
-          Description (Some lines about product)
-        </label>
-        <textarea
-          name="description"
-          className="border-[1px] rounded bordere-solid border-black p-5 outline-none"
-          id=""
-          cols="10"
-          placeholder="Write something about product"
-          rows="5"
-          value={data.description} required
-          onChange={gettingInputs}
-        ></textarea>
-      </div>
+        <div className="flex flex-col gap-3 pb-5">
+          <label htmlFor="description" className="font-semibold">
+            Description (Some lines about product)
+          </label>
+          <textarea
+            name="description"
+            className="border-[1px] rounded bordere-solid border-black p-5 outline-none"
+            id=""
+            cols="10"
+            placeholder="Write something about product"
+            rows="5"
+            value={data.description}
+            required
+            onChange={gettingInputs}
+          ></textarea>
+        </div>
 
-      <div>
-        <button type="submit"
-          className="bg-pink-400 text-white rounded w-full p-3"
-        >
-          Submit Review
-        </button>
-      </div>
+        <div>
+          <button
+            type="submit"
+            className="bg-pink-400 text-white rounded w-full p-3"
+          >
+            Submit Review
+          </button>
+        </div>
       </form>
     </div>
   );

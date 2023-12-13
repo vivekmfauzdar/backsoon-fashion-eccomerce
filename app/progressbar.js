@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
 import React from "react";
 
 function Progressbar() {
- 
-    return (
+  return (
     <div>
       <div class="shadow w-full bg-grey-light mt-2">
         <div
@@ -14,7 +13,6 @@ function Progressbar() {
       </div>
     </div>
   );
-
 }
 
 export default Progressbar;

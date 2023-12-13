@@ -27,7 +27,7 @@ function Setprofile() {
         setCurUserUid(user);
       } else {
         setCurUserUid(null);
-        router.push("/login")
+        router.push("/login");
       }
     });
   }, []);

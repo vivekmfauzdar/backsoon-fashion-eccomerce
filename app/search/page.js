@@ -32,10 +32,18 @@ function Search() {
             .where("category", "array-contains", i.trim().toLocaleLowerCase());
           let queryByBrandCategory = dbfs
             .collection("AllProducts")
-            .where("categoryBrand", "array-contains", i.trim().toLocaleLowerCase());
+            .where(
+              "categoryBrand",
+              "array-contains",
+              i.trim().toLocaleLowerCase()
+            );
           let queryBySearchQuery = dbfs
             .collection("AllProducts")
-            .where("searchQuery", "array-contains", i.trim().toLocaleLowerCase());
+            .where(
+              "searchQuery",
+              "array-contains",
+              i.trim().toLocaleLowerCase()
+            );
           let queryByBrand = dbfs
             .collection("AllProducts")
             .where("brand", "==", i.trim().toLocaleLowerCase());

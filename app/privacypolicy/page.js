@@ -7,12 +7,13 @@ function page() {
         <div className="w-[100%] pt-[80px] caret-transparent mb-[100px]">
           <div className="max-w-[770px] min-w-[400px] p-5 mx-auto text-black select-none">
             <div>
-              <h1 className="text-2xl font-bold">
-                Privacy Policy
-              </h1>
+              <h1 className="text-2xl font-bold">Privacy Policy</h1>
             </div>
             <div className="text-justify mt-10">
-            At Backsoon Fashion, we are committed to safeguarding the privacy of our customers. This Privacy Policy outlines how we collect, use, disclose, and manage your personal information when you interact with our website and services.
+              At Backsoon Fashion, we are committed to safeguarding the privacy
+              of our customers. This Privacy Policy outlines how we collect,
+              use, disclose, and manage your personal information when you
+              interact with our website and services.
               <br />
               <br />
               <span className="font-semibold">
@@ -20,7 +21,12 @@ function page() {
               </span>
               <br />
               <br />
-              When you visit Backsoon Fashion, we may collect personal information such as your name, email address, shipping and billing address, payment information, and browsing activity on our website. We may also gather non-personal information, such as your IP address, browser type, and device information, to improve our services.
+              When you visit Backsoon Fashion, we may collect personal
+              information such as your name, email address, shipping and billing
+              address, payment information, and browsing activity on our
+              website. We may also gather non-personal information, such as your
+              IP address, browser type, and device information, to improve our
+              services.
               <br />
               <br />
               <span className="font-semibold">Log Data</span>
@@ -112,7 +118,9 @@ function page() {
               do the necessary actions.
               <br />
               <br />
-              <span className="font-semibold">Changes to This Privacy Policy</span> 
+              <span className="font-semibold">
+                Changes to This Privacy Policy
+              </span>
               <br />
               <br />
               We may update our Privacy Policy from time to time. Thus, you are
@@ -126,8 +134,13 @@ function page() {
               <span className="font-semibold">Contact Us</span>
               <br />
               <br />
-              If you have any questions, concerns, or requests regarding our Privacy Policy or the handling of your personal information, please contact us at 
-              <span className="font-semibold"> privacy@backsoonfashion.com.</span>
+              If you have any questions, concerns, or requests regarding our
+              Privacy Policy or the handling of your personal information,
+              please contact us at
+              <span className="font-semibold">
+                {" "}
+                privacy@backsoonfashion.com.
+              </span>
             </div>
           </div>
         </div>

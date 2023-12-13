@@ -5,7 +5,6 @@ import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
-import { MdOutlineLocationOn } from "react-icons/md";
 import { BsBagHeart } from "react-icons/bs";
 import { MdOutlineLogout } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
@@ -14,17 +13,17 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { dbfs } from "./firebase";
 
-export default function HoverDropdown({name}) {
+export default function HoverDropdown({ name }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
   const logout = () => {
     const auth = getAuth();
-      signOut(auth).then(() => {
-        router.push("/");
-        toast.success("Logout Successfully");
-      });
-  }
+    signOut(auth).then(() => {
+      router.push("/");
+      toast.success("Logout Successfully");
+    });
+  };
 
   return (
     <div>
@@ -44,26 +43,25 @@ export default function HoverDropdown({name}) {
             open ? "block" : "hidden"
           }`}
         >
-
-        <Link href="/account">
-          <li className="flex w-full gap-2 items-center px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
-            <BiUserCircle size={25} />
-            <h1>My Profile</h1>
-          </li>
-         </Link> 
-          
-          <Link href="/account/orders">  
-          <li className="flex gap-2 w-full items-center px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
-            <BsBagHeart size={25} />
-            <h1>Orders</h1>
-          </li>
+          <Link href="/account">
+            <li className="flex w-full gap-2 items-center px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+              <BiUserCircle size={25} />
+              <h1>My Profile</h1>
+            </li>
           </Link>
-        
-         <Link href='/wishlist'>
-          <li className="flex gap-2 w-full items-center px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
-            <AiOutlineHeart size={25} />
-            <h1>Wishlist</h1>
-          </li>
+
+          <Link href="/account/orders">
+            <li className="flex gap-2 w-full items-center px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+              <BsBagHeart size={25} />
+              <h1>Orders</h1>
+            </li>
+          </Link>
+
+          <Link href="/wishlist">
+            <li className="flex gap-2 w-full items-center px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+              <AiOutlineHeart size={25} />
+              <h1>Wishlist</h1>
+            </li>
           </Link>
 
           <li

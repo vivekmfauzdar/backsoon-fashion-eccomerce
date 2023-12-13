@@ -2,7 +2,7 @@
 
 import React from "react";
 import logo from "./Images/backsoon_logo1.png";
-import {dbfs} from "./firebase";
+import { dbfs } from "./firebase";
 import { getAuth, signOut } from "firebase/auth";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -21,7 +21,8 @@ import watch from "./Pictures/smart-watch.png";
 import hoodie from "./Pictures/ihoodie2.png";
 import tshirt from "./Pictures/tshirt.png";
 import sunglass from "./Pictures/sunglass.png";
-import hi from './Images/hi.png'
+import hi from "./Images/hi.png";
+import { useSelector } from "react-redux";
 
 function navigationmenu() {
   const [open, setOpen] = useState(false);
@@ -31,6 +32,9 @@ function navigationmenu() {
   const [userUid, setUserUid] = useState("");
   const [userName, setUserName] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
+
+  //Getting the data from redux
+  const cartDataNum = useSelector((cur) => cur.cartData);
 
   const Links = [
     { name: "My Profile", link: "/account" },
@@ -53,11 +57,10 @@ function navigationmenu() {
   ];
 
   useEffect(() => {
-
-    if(searchInput.length === ""){
-      toast.success("Input field empty")
+    if (searchInput.length === "") {
+      toast.success("Input field empty");
     }
-  }, [searchInput])
+  }, [searchInput]);
   // getting the current user
   useEffect(() => {
     const auth = getAuth();
@@ -91,7 +94,7 @@ function navigationmenu() {
             if (snapshot.exists) {
               const name = snapshot.data();
               setUserName(name.fname);
-              setPhoneNum(name.phoneNum)
+              setPhoneNum(name.phoneNum);
             }
           });
         }
@@ -123,7 +126,8 @@ function navigationmenu() {
                 src={logo}
                 width={400}
                 height={400}
-                alt="website logo" priority={true}
+                alt="website logo"
+                priority={true}
               />
             </Link>
 
@@ -138,7 +142,7 @@ function navigationmenu() {
                   className="flex gap-2 items-center relative"
                 >
                   <span className="bg-red-400 rounded-full w-[16px] h-[16px] text-[10px] p-[2px] text-white text-center font-semibold absolute top-[-7px]">
-                    {cartData.length}
+                    {cartDataNum.length}
                   </span>
                   <FiShoppingBag size={42} />
                 </Link>
@@ -164,14 +168,13 @@ function navigationmenu() {
                 <li className="pl-9 pb-3">
                   {userUid !== null ? (
                     <div className="flex items-center gap-2">
-                    <Image src={hi} className="w-[80px]" alt="hi-icon"/>
-                    <div>
-                    <h1 className="font-semibold py-2 text-2xl">
-                      Hi, {userName}
-                    </h1>
-                    <h1 className=" text-2xl">{phoneNum}</h1>
-                    </div>
-
+                      <Image src={hi} className="w-[80px]" alt="hi-icon" />
+                      <div>
+                        <h1 className="font-semibold py-2 text-2xl">
+                          Hi, {userName}
+                        </h1>
+                        <h1 className=" text-2xl">{phoneNum}</h1>
+                      </div>
                     </div>
                   ) : (
                     <div>
@@ -180,9 +183,7 @@ function navigationmenu() {
                       </h1>
 
                       <Link href="/login" className="cursor-pointer">
-                        <h1 className="py-2 text-2xl">
-                          Login/SignUp
-                        </h1>
+                        <h1 className="py-2 text-2xl">Login/SignUp</h1>
                       </Link>
                     </div>
                   )}
@@ -262,7 +263,7 @@ function navigationmenu() {
               <h2 className="cursor-pointer text-xl caret-transparent">
                 Search
               </h2>
-            </Link> 
+            </Link>
           </div>
         </div>
       </div>

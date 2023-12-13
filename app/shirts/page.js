@@ -266,10 +266,15 @@ function Shirts() {
                     {shortentitle(curElm.title, 20)}
                   </h2>
                   <div className="flex gap-2 pl-2">
-                    <h3 className="font-semibold text-xl lg:text-base">₹{curElm.discountedprice}</h3>
-                    <h3 className="line-through text-xl lg:text-base">₹{curElm.realprice}</h3>
+                    <h3 className="font-semibold text-xl lg:text-base">
+                      ₹{curElm.discountedprice}
+                    </h3>
+                    <h3 className="line-through text-xl lg:text-base">
+                      ₹{curElm.realprice}
+                    </h3>
                     <h3 className="text-green-400 text-xl lg:text-base">
-                     ( {getOffPercent(curElm.discountedprice, curElm.realprice)}%
+                      ({" "}
+                      {getOffPercent(curElm.discountedprice, curElm.realprice)}%
                       OFF)
                     </h3>
                   </div>

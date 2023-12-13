@@ -1,18 +1,17 @@
-import React from 'react'
-import Navigation from '../navigation'
-import Footer from '../footer'
+import React from "react";
+import Navigation from "../navigation";
+import Footer from "../footer";
 
-function layout({children}) {
-
+function layout({ children }) {
   return (
     <>
-    <div className='max-w-[1270px] min-w-[600px] mx-auto'>
-    <Navigation />
-      {children}
-     <Footer /> 
-     </div>
+      <div className="max-w-[1270px] min-w-[600px] mx-auto">
+        <Navigation />
+        {children}
+        <Footer />
+      </div>
     </>
-  )
+  );
 }
 
-export default layout
+export default layout;

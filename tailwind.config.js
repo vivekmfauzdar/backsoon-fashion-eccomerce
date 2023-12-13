@@ -36,7 +36,6 @@ const withMT = require("@material-tailwind/react/utils/withMT");
       'md': '768px',
       // => @media (min-width: 768px) { ... }
 
-
       'lg': '1024px',
       // => @media (min-width: 1024px) { ... }
 

@@ -11,10 +11,12 @@ import { getAuth } from "firebase/auth";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Navigationmenu from "./navigationmenu";
+import { useSelector } from "react-redux";
 
 const Dropdown = dynamic(() => import("./dropdown"));
 
 function Navigation() {
+  const cartDataNum = useSelector((cur) => cur.cartData);
   const [searchInput, setSearchInput] = useState("");
   const [cartData, setCartData] = useState([]);
   const [userUid, setUserUid] = useState("");
@@ -73,7 +75,8 @@ function Navigation() {
               src={backsoonlogo}
               width={400}
               height={400}
-              alt="website-logo" priority={true}
+              alt="website-logo"
+              priority={true}
             />
           </Link>
         </div>
@@ -126,7 +129,7 @@ function Navigation() {
               className="flex gap-2 items-center relative"
             >
               <span className="bg-red-400 rounded-full w-[16px] h-[16px] text-[10px] p-[2px] text-white text-center font-semibold absolute  top-[-7px]">
-                {cartData.length}
+                {cartDataNum.length}
               </span>
               <FiShoppingBag size={22} />
               <button className="">Bag</button>

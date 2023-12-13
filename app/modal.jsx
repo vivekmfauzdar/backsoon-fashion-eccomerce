@@ -1,3 +1,5 @@
+"use client";
+
 import { dbfs } from "./firebase";
 import toast from "react-hot-toast";
 

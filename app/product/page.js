@@ -1,19 +1,16 @@
+"use client";
 
-"use client"
-
-import React from 'react'
-import { useSearchParams, usePathname } from 'next/navigation'
+import React from "react";
+import { redirect } from "next/navigation";
 
 function Product() {
-  
+  redirect("/");
 
-    const search = usePathname()
-    console.log("this is " ,search)
-    return (
+  return (
     <div>
-       <h1>This is product page.</h1>
+      <h1>This is product page.</h1>
     </div>
-  )
+  );
 }
 
-export default Product
+export default Product;

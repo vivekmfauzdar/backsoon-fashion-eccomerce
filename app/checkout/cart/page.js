@@ -9,6 +9,11 @@ import { data } from "autoprefixer";
 import { useRouter } from "next/navigation";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
+import { dbfs } from "@/app/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartData, removeData } from "@/app/redux/slice";
+import { useSelect } from "@material-tailwind/react";
+
 
 function Bag() {
 
@@ -19,6 +24,9 @@ function Bag() {
   const [bagData, setBagData] = useState([]);
   const [curUser, setCurUser] = useState("")
 
+  const cartDataRedux = useSelector((cur) => cur.cartData)
+  console.log(cartDataRedux)
+  const dispatch = useDispatch()
 
   //getting the current user
   useEffect(() => {
@@ -48,13 +56,14 @@ function Bag() {
     updatedData.splice(index, 1);
     setBagData(updatedData);
     localStorage.setItem("cartData", JSON.stringify(updatedData));
+    dispatch(removeData(index))
   };
 
   
   const changeProductCount = (index, sign, rightprice) => {
     setProductNum((prevProductNum) => {
       const updatedProductNum =
-        sign === "+" ? prevProductNum + 1 : prevProductNum - 1;
+        sign === "+" ?prevProductNum==10 ? 10 :  prevProductNum + 1 : prevProductNum==1 ?  1 : prevProductNum - 1;
       const newData = [...bagData];
       newData[index] = {
         ...newData[index],
@@ -87,7 +96,7 @@ function Bag() {
                   </div>
                   <div className="">
                     <h1 className="font-semibold text-xl lg:text-base">{curData?.brand}</h1>
-                    <Link className="hover:text-blue-600 hover:underline" href={{pathname : `/product/${curData.id}`, query: {category: curData.category}}}>
+                    <Link className="hover:text-blue-600 hover:underline" href={{pathname : `/product/${curData.id}`, query: {category: curData.colletionN}}}>
 
                     <h1 className="text-xl lg:text-base">{curData?.title}</h1>
                     </Link>
@@ -140,12 +149,12 @@ function Bag() {
                   <hr />
 
                   <div className="p-5">
-                    <div className="flex justify-between text-2xl lg:text-xl">
+                    <div className="flex justify-between text-2xl lg:text-lg">
                       <h2>Price ({bagData.length} items)</h2>
                       <h2>₹{totalAmount}</h2>
                     </div>
 
-                    <div className="flex justify-between pt-5 text-2xl lg:text-xl">
+                    <div className="flex justify-between pt-5 text-2xl lg:text-lg">
                       <h2>Delivery Charges</h2>
                       <h2>₹40</h2>
                     </div>
@@ -153,7 +162,7 @@ function Bag() {
 
                   <hr />
 
-                  <div className="p-2 flex justify-between text-2xl lg:text-xl">
+                  <div className="p-5 flex justify-between text-2xl lg:text-lg">
                     <h2>Total Amount</h2>
                     <h2>₹{totalAmount + 40}</h2>
                   </div>
@@ -197,7 +206,7 @@ function Bag() {
                   <hr />
 
                   <div className="p-5">
-                    <div className="flex justify-between text-2xl lg:text-xl">
+                    <div className="flex justify-between text-2xl lg:text-[12px]">
                       <h2>Price ({bagData.length} items)</h2>
                       <h2>₹{totalAmount}</h2>
                     </div>

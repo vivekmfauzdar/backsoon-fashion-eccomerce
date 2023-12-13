@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Footer() {
-
-
   return (
     <>
       <div className="w-[100%] shadow-lg caret-transparent">
@@ -14,7 +12,13 @@ function Footer() {
             <div className="lg:w-1/3">
               <Link href="/" className="">
                 <div className="w-[300px]">
-                  <Image src={logo} alt="logo" className="w-[250px]" width={400} height={400}/>
+                  <Image
+                    src={logo}
+                    alt="logo"
+                    className="w-[250px]"
+                    width={400}
+                    height={400}
+                  />
                   <p className="text-xl lg:text-base pt-2">
                     Backsoon is your one biggest online shop to fulfill your
                     fashion needs but also within your pocket.
@@ -42,7 +46,7 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="space-y-3">
                 <h3 className="tracki text-lg lg:text-base uppercase dark:text-gray-700">
                   Important Links
@@ -64,7 +68,9 @@ function Footer() {
                 </ul>
               </div>
               <div className="space-y-3">
-                <h3 className="uppercase dark:text-gray-700 text-xl lg:text-base">Company</h3>
+                <h3 className="uppercase dark:text-gray-700 text-xl lg:text-base">
+                  Company
+                </h3>
                 <ul className="space-y-1 text-xl lg:text-base">
                   <li>
                     <Link href="/privacypolicy">Privacy Policy</Link>

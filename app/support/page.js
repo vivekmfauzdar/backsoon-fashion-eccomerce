@@ -13,8 +13,8 @@ const Contact = () => {
   const [curUserUid, setUserUid] = useState("");
 
   const [message, setMessage] = useState("");
-  const [selectReason, setSelectReason] = useState("")
-  const [msgNum, setMsgNum] = useState('')
+  const [selectReason, setSelectReason] = useState("");
+  const [msgNum, setMsgNum] = useState("");
   const weekday = [
     "Sunday",
     "Monday",
@@ -51,26 +51,22 @@ const Contact = () => {
     });
   }, []);
 
-
   useEffect(() => {
-
-    try{
-    const ref = dbfs.collection("SupportUser").doc(curUserUid);
-    const r = ref.onSnapshot((snapshot) => {
-          if(snapshot.exists){
-            const d = snapshot.data()
-            setMsgNum(d.queryNum)
-          }
-    })}catch(error){}
-
-  }, [curUserUid])
+    try {
+      const ref = dbfs.collection("SupportUser").doc(curUserUid);
+      const r = ref.onSnapshot((snapshot) => {
+        if (snapshot.exists) {
+          const d = snapshot.data();
+          setMsgNum(d.queryNum);
+        }
+      });
+    } catch (error) {}
+  }, [curUserUid]);
 
   const formSubmit = async (e) => {
-
     e.preventDefault();
 
     if (message === "" || selectReason === "") {
-
       toast.error("Both Fields are mandatory");
     } else {
       const obj = {
@@ -94,42 +90,45 @@ const Contact = () => {
         relatedTo: selectReason,
       };
 
-      try{
-      const docRef = dbfs
-        .collection("SupportQuery")
-        .doc(curUserUid)
-        .collection("support");
-      const newDocRef = await docRef.add(obj);
-      const i = newDocRef.id;
+      try {
+        const docRef = dbfs
+          .collection("SupportQuery")
+          .doc(curUserUid)
+          .collection("support");
+        const newDocRef = await docRef.add(obj);
+        const i = newDocRef.id;
 
-      await newDocRef
-        .update({
-          id: i,
-        })
-        .then(() => {
-          toast.success("dekho yr ka hoy ");
-          setSend(true);
-        });
-
-      }catch(error){
-        console.error(error)
+        await newDocRef
+          .update({
+            id: i,
+          })
+          .then(() => {
+            toast.success("dekho yr ka hoy ");
+            setSend(true);
+          });
+      } catch (error) {
+        console.error(error);
       }
 
       const supportUser = {
         name: `${userData.fname} ${userData.lname}`,
-        day:  weekday[new Date().getDay()],
+        day: weekday[new Date().getDay()],
         status: "new",
         message: message,
-        queryNum:  parseInt(msgNum + 1) ,
-        UID : curUserUid
-      }
+        queryNum: parseInt(msgNum + 1),
+        UID: curUserUid,
+      };
 
-      try{
-        const dRef = dbfs.collection("SupportUser").doc(curUserUid).set(supportUser).then(() =>{
-          toast.success("done here also")
-        })
-      }catch(error){
-        console.error(error)
+      try {
+        const dRef = dbfs
+          .collection("SupportUser")
+          .doc(curUserUid)
+          .set(supportUser)
+          .then(() => {
+            toast.success("done here also");
+          });
+      } catch (error) {
+        console.error(error);
       }
     }
   };
@@ -147,12 +146,18 @@ const Contact = () => {
           <div className="flex justify-center items-center pt-10">
             <h1 className="font-semibold">
               For Any Query Please Send Query OR <br /> Just Mail Us at{" "}
-              <span className="font-semibold hover:cursor-pointer hover:text-blue-400 hover:border-b" onClick={()=> {
-                navigator.clipboard.writeText("backsoonfashion@backsoon.in").then(() => {
-                  toast.success("EMail Copied to clipboard")
-                })
-              }}>backsoonfashion@backsoon.in</span>
-              
+              <span
+                className="font-semibold hover:cursor-pointer hover:text-blue-400 hover:border-b"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText("backsoonfashion@backsoon.in")
+                    .then(() => {
+                      toast.success("EMail Copied to clipboard");
+                    });
+                }}
+              >
+                backsoonfashion@backsoon.in
+              </span>
             </h1>
           </div>
 
@@ -160,15 +165,18 @@ const Contact = () => {
             <form
               action=""
               onSubmit={formSubmit}
-              className="flex flex-col gap-4 mx-auto p-5 lg:w-[700px]">
+              className="flex flex-col gap-4 mx-auto p-5 lg:w-[700px]"
+            >
               <label htmlFor="select">Select Query Reason</label>
-              <select onChange={(e) => setSelectReason(e.target.value)} className="border-solid border-gray-600 border-2 rounded p-2 outline-none">
+              <select
+                onChange={(e) => setSelectReason(e.target.value)}
+                className="border-solid border-gray-600 border-2 rounded p-2 outline-none"
+              >
                 <option value="">Select here</option>
                 <option value="Return Related">Return Related</option>
                 <option value="Product Related">Product Related</option>
                 <option value="Refund Related">Refund Related</option>
                 <option value="Others">Other</option>
-                
               </select>
               <label htmlFor="message" className="">
                 Write Your Query

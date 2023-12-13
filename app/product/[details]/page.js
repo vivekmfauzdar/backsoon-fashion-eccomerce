@@ -26,6 +26,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/app/footer";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import { FaRegHandPointRight } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartData } from "@/app/redux/slice";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -142,8 +144,12 @@ function Details() {
   const search = usePathname();
   const id = search.split("/").at(2);
 
+  const dispatch = useDispatch();
+
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
+
+  const data = useSelector((cur) => cur.cartData);
 
   // current user UID
   useEffect(() => {
@@ -222,7 +228,7 @@ function Details() {
     return orderID;
   };
 
-  const addTocart = (title, brand, price, images, id) => {
+  const addTocart = (title, brand, price, images, id, colletionN) => {
     const productCount = 1;
     const rightprice = price;
     const productprice = parseInt(price, 10);
@@ -236,8 +242,11 @@ function Details() {
       rightprice,
       id,
       orderID,
+      colletionN,
     };
     setCartData((prev) => [...prev, ob]);
+    dispatch(addCartData(ob));
+
     toast.success("Product Added to Bag");
   };
 
@@ -302,7 +311,7 @@ function Details() {
   return (
     <>
       <div className="max-w-[1270px] min-w-[600px] mx-auto">
-        <Navigation />
+        <Navigation cartd={data.length} />
         <div className="max-w-[970px] min-w-[600px] mx-auto">
           <ToastContainer autoClose="2000" />
 
@@ -436,7 +445,8 @@ function Details() {
                           recentUsers.brand,
                           recentUsers.discountedprice,
                           recentUsers.images[0],
-                          recentUsers.id
+                          recentUsers.id,
+                          recentUsers.colletionN
                         )
                       }
                     >
@@ -614,7 +624,8 @@ function Details() {
                                 ₹{curElm.realprice}
                               </h3>
                               <h3 className="text-green-400">
-                                ({getOffPercent(
+                                (
+                                {getOffPercent(
                                   curElm.discountedprice,
                                   curElm.realprice
                                 )}
