@@ -5,7 +5,7 @@ const { createSlice, nanoid, current } = require("@reduxjs/toolkit");
 
 const getFromLocalStorage = (key) => {
   if (typeof window === "undefined") {
-    return [];
+    return "";
   }else{
     return localStorage.getItem(key);
   }
