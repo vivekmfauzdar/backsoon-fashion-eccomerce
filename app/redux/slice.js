@@ -7,8 +7,7 @@ const getFromLocalStorage = (key) => {
   if (typeof window === "undefined") {
     return [];
   }else{
-    const data = localStorage.getItem(key);
-  return data
+    return localStorage.getItem(key);
   }
 };
 
