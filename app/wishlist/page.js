@@ -24,6 +24,7 @@ function page() {
         const docRef = dbfs.collection("MyWishlist").doc(user.uid);
         docRef.collection("MyWishData").onSnapshot((snapshot) => {
           const arr = [];
+          snapshot.size
           snapshot.forEach((cur) => {
             arr.push(cur.data());
           });
@@ -112,7 +113,7 @@ function page() {
             })
           ) : (
             <div className="py-10">
-              <div className="flex flex-col items-center gap-2 justify-center">
+              <div className="flex flex-col lg:h-[90vh] h-[60vh] items-center gap-2 justify-center">
                 <Image
                   className="w-[4rem]"
                   src={wishlist}

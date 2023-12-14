@@ -4,17 +4,17 @@ const { createSlice, nanoid, current } = require("@reduxjs/toolkit");
 
 
 const getFromLocalStorage = (key) => {
-  if (!key || typeof window === "undefined") {
-    return "";
+  if (typeof window === "undefined") {
+    return [];
   }else{
   return localStorage.getItem(key);
   }
 };
 
-export const initialState = {
+
+const initialState = {
   cartData: getFromLocalStorage("newCartData") ? JSON.parse(getFromLocalStorage("newCartData") || "{}") : []
-  
-};
+} 
 
 const Slice = createSlice({
   name: "addCartData",

@@ -134,7 +134,7 @@ function Login() {
     <div className="w-[100%]">
       <ToastContainer />
 
-      <div className="lg:max-w-[400px] grid grid-cols-1 justify-items-center max-w-[970px] min-w-[600px] lg:min-w-[400px] py-[100px] mx-auto lg:h-[90vh] p-10">
+      <div className="lg:max-w-[400px] grid grid-cols-1 justify-items-center max-w-[970px] min-w-[600px] lg:min-w-[400px] py-[100px] mx-auto lg:h-[90vh] h-[60vh] p-10">
         <div id="recaptcha-container"></div>
 
         <div>

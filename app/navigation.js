@@ -21,6 +21,7 @@ function Navigation() {
   const [cartData, setCartData] = useState([]);
   const [userUid, setUserUid] = useState("");
   const [userName, setUserName] = useState("");
+  const [firebaseData, setFirebaseData] = useState()
 
   // getting the current user
   useEffect(() => {
@@ -29,11 +30,19 @@ function Navigation() {
     let curUser = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserUid(user.uid);
+        const docRef = dbfs.collection("MyWishlist").doc(user.uid);
+        docRef.collection("MyWishData").onSnapshot((snapshot) => {
+          
+          setFirebaseData(snapshot.size);
+        });
       } else {
         setUserUid(null);
       }
     });
   }, []);
+
+
+
 
   useEffect(() => {
     const data = localStorage.getItem("cartData");
@@ -41,6 +50,7 @@ function Navigation() {
       setCartData(JSON.parse(data));
     }
   }, []);
+
 
   // getting the name of listing owner
   useEffect(() => {
@@ -115,12 +125,13 @@ function Navigation() {
 
         <div className="flex gap-5">
           {userUid != null && (
-            <div className="flex gap-2 items-center cursor-pointer">
+            <Link  href="/wishlist" className="flex gap-2 items-center cursor-pointer relative">              
+            <span className="bg-red-400 rounded-full w-[16px] h-[16px] text-[10px] p-[2px] text-white text-center font-semibold absolute left-4 top-[-1px]">
+                {firebaseData}
+              </span>
               <AiOutlineHeart size={25} />
-              <Link href="/wishlist">
                 <button>Wishlist</button>
               </Link>
-            </div>
           )}
 
           <div className="flex gap-2 items-center cursor-pointer">

@@ -23,6 +23,8 @@ import tshirt from "./Pictures/tshirt.png";
 import sunglass from "./Pictures/sunglass.png";
 import hi from "./Images/hi.png";
 import { useSelector } from "react-redux";
+import { AiOutlineHeart } from "react-icons/ai";
+
 
 function navigationmenu() {
   const [open, setOpen] = useState(false);
@@ -32,7 +34,7 @@ function navigationmenu() {
   const [userUid, setUserUid] = useState("");
   const [userName, setUserName] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
-
+  const [firebaseData, setFirebaseData] = useState()
   //Getting the data from redux
   const cartDataNum = useSelector((cur) => cur.cartData);
 
@@ -68,6 +70,10 @@ function navigationmenu() {
     let curUser = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserUid(user.uid);
+        const docRef = dbfs.collection("MyWishlist").doc(user.uid);
+        docRef.collection("MyWishData").onSnapshot((snapshot) => {
+          setFirebaseData(snapshot.size);
+        });
       } else {
         setUserUid(null);
       }
@@ -136,12 +142,26 @@ function navigationmenu() {
                 <IoSearch size={40} />
               </div>
 
+              <div className="flex gap-5">
+                {userUid != null && (
+                  <Link
+                    href="/wishlist"
+                    className="flex gap-2 items-center cursor-pointer relative"
+                  >
+                    <span className="bg-red-400 rounded-full w-[20px] h-[20px] text-[12px] p-[2px] text-white text-center font-semibold absolute right-0 top-[-1px]">
+                      {firebaseData}
+                    </span>
+                    <AiOutlineHeart size={45} />
+                  </Link>
+                )}
+              </div>
+
               <div className="cursor-pointer">
                 <Link
                   href="/checkout/cart"
                   className="flex gap-2 items-center relative"
                 >
-                  <span className="bg-red-400 rounded-full w-[16px] h-[16px] text-[10px] p-[2px] text-white text-center font-semibold absolute top-[-7px]">
+                  <span className="bg-red-400 rounded-full w-[20px] h-[20px] text-[12px] p-[2px] text-white text-center font-semibold absolute right-0 top-[-7px]">
                     {cartDataNum.length}
                   </span>
                   <FiShoppingBag size={42} />
