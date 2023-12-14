@@ -4,15 +4,12 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { RxCross2 } from "react-icons/rx";
 import shoppingbag from "../../Images/shopping-bags.png";
-import menhoodie from "../../Images/meninhoodie.jpg";
-import { data } from "autoprefixer";
 import { useRouter } from "next/navigation";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
 import { dbfs } from "@/app/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartData, removeData } from "@/app/redux/slice";
-import { useSelect } from "@material-tailwind/react";
 
 
 function Bag() {
